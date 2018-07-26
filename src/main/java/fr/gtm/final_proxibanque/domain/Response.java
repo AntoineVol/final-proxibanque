@@ -8,10 +8,14 @@ import javax.persistence.Id;
 @Entity
 public class Response {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
 	private String comment;
 	private boolean positiveResponse;
 	private boolean newClient;
+	
 	
 	private Client client;
 	
@@ -21,7 +25,7 @@ public class Response {
 	public Response() {
 	}
 	
-	public Response(String comment, boolean positiveResponse, boolean newclient){
+	public Response(String comment, boolean positiveResponse, boolean newClient){
 		this.comment = comment;
 		this.positiveResponse= positiveResponse;
 		this.newClient = newClient;
@@ -29,8 +33,7 @@ public class Response {
 	}
 	
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+
 	public Integer getId() {
 		return id;
 	}
