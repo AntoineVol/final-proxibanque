@@ -10,11 +10,18 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 /**
  * 
  * @author Kamir, Antoine, Steven
  *
  */
+
 @Entity
 public class Survey implements Serializable {
 	
@@ -22,13 +29,22 @@ public class Survey implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	@Id
+	@Column
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
+	@Column
 	private LocalDate startDate;
+	
+	@Column
 	private LocalDate endDate;
+	
+	@Column
 	private LocalDate expectedDate;
+
 	@OneToMany(mappedBy="survey")
 	private List<Response> responses;
+
 	
 	// Getters & Setters
 	
