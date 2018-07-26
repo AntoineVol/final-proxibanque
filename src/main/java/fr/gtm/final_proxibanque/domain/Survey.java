@@ -3,26 +3,34 @@ package fr.gtm.final_proxibanque.domain;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 /**
  * 
  * @author Kamir, Antoine, Steven
  *
  */
+@Entity
 public class Survey implements Serializable {
 	
 	// Attributes of the Survey class 
 
 	private static final long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private LocalDate startDate;
 	private LocalDate endDate;
 	private LocalDate expectedDate;
-	private List<Reponse> reponses;
+	private List<Reponse> responses;
 	
 	// Getters & Setters
 	
 	/**
-	 * @return the id of the survey
+	 * @return the id
 	 */
 	public Integer getId() {
 		return id;
@@ -34,7 +42,7 @@ public class Survey implements Serializable {
 		this.id = id;
 	}
 	/**
-	 * @return the startDate of the survey
+	 * @return the startDate
 	 */
 	public LocalDate getStartDate() {
 		return startDate;
@@ -46,7 +54,7 @@ public class Survey implements Serializable {
 		this.startDate = startDate;
 	}
 	/**
-	 * @return the endDate of the survey
+	 * @return the endDate
 	 */
 	public LocalDate getEndDate() {
 		return endDate;
@@ -58,7 +66,7 @@ public class Survey implements Serializable {
 		this.endDate = endDate;
 	}
 	/**
-	 * @return the expectedDate of the survey
+	 * @return the expectedDate
 	 */
 	public LocalDate getExpectedDate() {
 		return expectedDate;
@@ -70,7 +78,7 @@ public class Survey implements Serializable {
 		this.expectedDate = expectedDate;
 	}
 	/**
-	 * @return the reponses received for this survey
+	 * @return the reponses
 	 */
 	public List<Reponse> getReponses() {
 		return reponses;
@@ -80,6 +88,6 @@ public class Survey implements Serializable {
 	 */
 	public void setReponses(List<Reponse> reponses) {
 		this.reponses = reponses;
-	}
+	}	
 
 }
