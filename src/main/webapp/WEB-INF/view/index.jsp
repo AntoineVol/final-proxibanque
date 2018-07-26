@@ -21,10 +21,12 @@
 
 							<tr>
 
+								<td>Id:</td>
+
 								<td>Date d'ouverture:</td>
 
 								<td>Date de fermeture:</td>
-								
+
 								<td>Détails:</td>
 
 							</tr>
@@ -34,16 +36,18 @@
 						<tbody>
 
 							<c:forEach var="survey" items="${surveys}">
-							<c:url value="/details.html?id=" var="details" />
+								<c:url value="/details.html?id=" var="details" />
 								<tr>
+									<td><c:out value="${survey.id}" /></td>
 
 									<td><c:out value="${survey.startDate}" /></td>
 
 									<td><c:out value="${survey.endDate}" /></td>
-									
-									<td><a href="${details}${survey.id}" class="btn btn-info">Voir détails</a></td>
 
-	
+									<td><a href="${details}${survey.id}" class="btn btn-info">Voir
+											détails</a></td>
+
+
 								</tr>
 
 							</c:forEach>
@@ -71,12 +75,23 @@
 							name="dateFermeturePrevisionnelle">
 					</div>
 					<div class="form-group">
-						<button type="submit" class="btn btn-success btn-lg">
-							Créer</button>
+						<c:if test="${isRunning==0}"><button type="submit" class="btn btn-success btn-lg">Créer</button></c:if>
+						<c:if test="${isRunning==1}"><button type="submit" class="btn btn-default" disabled="disabled">Créer</button></c:if>
 					</div>
 				</form>
 			</div>
 		</div>
+		<form action="" method="post">
+			<div class="form-group">
+				<label for="dateFermeture">Date de fermeture:</label> <input
+					type="date" class="form-control" id="dateFermeture"
+					name="dateFermeture">
+			</div>
+			<div class="form-group">
+				<c:if test="${isRunning==1}"><button type="submit" class="btn btn-success btn-lg">Fermer le sondage</button></c:if>
+				<c:if test="${isRunning==0}"><button type="submit" class="btn btn-default" disabled="disabled">Fermer le sondage</button></c:if>
+			</div>
+		</form>
 	</div>
 </body>
 </html>

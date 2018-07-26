@@ -9,7 +9,7 @@
 	integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
 	crossorigin="anonymous">
 <body>
-	<h2>Sondage en cours</h2>
+	<h2>Détails:</h2>
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col">
@@ -50,26 +50,17 @@
 
 			</div>
 			<div class="col">
-				<h4>Créer un sondage</h4>
-				<form method="post">
-					<div class="form-group">
-						<label for="dateOuverture">Date d'ouverture:</label> <input
-							type="date" class="form-control" id="dateOuverture"
-							name="dateOuverture">
-					</div>
-					<div class="form-group">
-						<label for="dateFermeturePrevisionnelle">Date de fermeture
-							previsionnelle:</label> <input type="date" class="form-control"
-							id="dateFermeturePrevisionnelle"
-							name="dateFermeturePrevisionnelle">
-					</div>
-					<div class="form-group">
-						<button type="submit" class="btn btn-success btn-lg">
-							Créer</button>
-					</div>
-				</form>
+				<span>Nombre de réponse négatives: ${negatif}</span>
+			</div>
+			<div class="col">
+				<span>Nombre de réponse positives: ${positif}</span>
+			</div>
+			<div class="col">
+				<span>Nombre de nouveaux clients inscrits: ${nc}</span>
 			</div>
 		</div>
 	</div>
+	<c:url value="/index.html" var="index" />
+	<a href="${index}" class="btn btn-info">Revenir à l'accueil</a>
 </body>
 </html>

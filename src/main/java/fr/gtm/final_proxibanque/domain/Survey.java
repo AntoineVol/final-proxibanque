@@ -46,10 +46,18 @@ public class Survey implements Serializable {
 	@Column
 	private LocalDate expectedDate;
 
+<<<<<<< Updated upstream
 
 	@OneToMany(mappedBy="survey", fetch=FetchType.EAGER)
 	@JsonIgnore
 	private List<Response> responses;
+=======
+	@OneToMany(mappedBy="survey", fetch=FetchType.EAGER)
+	@JsonIgnore
+	private List<Response> responses = new ArrayList<>();
+
+
+>>>>>>> Stashed changes
 
 	// Getters & Setters
 	
