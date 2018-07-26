@@ -1,5 +1,7 @@
 package fr.gtm.final_proxibanque.business;
 
-public class SurveyService {
+import fr.gtm.final_proxibanque.domain.Survey;
+
+public class SurveyService extends CrudService<Survey> {
 
 }
