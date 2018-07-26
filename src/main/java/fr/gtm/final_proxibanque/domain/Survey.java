@@ -2,6 +2,7 @@ package fr.gtm.final_proxibanque.domain;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -45,11 +46,15 @@ public class Survey implements Serializable {
 	@Column
 	private LocalDate expectedDate;
 
+<<<<<<< Updated upstream
 	@OneToMany(mappedBy="survey", fetch=FetchType.EAGER)
 	@JsonIgnore
 	private List<Response> responses;
+=======
+	@OneToMany(mappedBy="survey")
+	private List<Response> responses = new ArrayList<>();
+>>>>>>> Stashed changes
 
-	
 	// Getters & Setters
 	
 	/**

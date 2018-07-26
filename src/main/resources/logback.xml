@@ -37,6 +37,16 @@
 		additivity="false">
 		<appender-ref ref="APPLOG" />
 	</logger>
+	
+	<logger level="debug" name="fr.gtm.final_proxibanque.web"
+		additivity="false">
+		<appender-ref ref="STDOUT" />
+	</logger>
+	
+	<logger level="info" name="fr.gtm.final_proxibanque.web"
+		additivity="false">
+		<appender-ref ref="APPLOG" />
+	</logger>
 
 	<root level="info">
 		<appender-ref ref="STDOUT" />
