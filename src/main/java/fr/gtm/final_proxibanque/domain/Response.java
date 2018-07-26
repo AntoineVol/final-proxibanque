@@ -9,7 +9,7 @@ import javax.persistence.ManyToOne;
 
 /**
  * 
- * @author 
+ * @author Kamir, Antoine, Steven
  * 
  * La classe Response représente la réponse du client au sondage
  *
@@ -57,14 +57,9 @@ public class Response {
 	
 	
 	public Response() {
-	}
-	
-	public Response(String comment, boolean positiveResponse, boolean newClient){
-		this.comment = comment;
-		this.positiveResponse= positiveResponse;
-		this.newClient = newClient;
 		
 	}
+	
 	
 
 
