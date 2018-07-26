@@ -2,6 +2,7 @@ package fr.gtm.final_proxibanque.domain;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,7 +26,7 @@ public class Survey implements Serializable {
 	private LocalDate startDate;
 	private LocalDate endDate;
 	private LocalDate expectedDate;
-	private List<Reponse> responses;
+	private List<Response> responses;
 	
 	// Getters & Setters
 	
@@ -78,16 +79,16 @@ public class Survey implements Serializable {
 		this.expectedDate = expectedDate;
 	}
 	/**
-	 * @return the reponses
+	 * @return the responses
 	 */
-	public List<Reponse> getReponses() {
-		return reponses;
+	public List<Response> getResponses() {
+		return responses;
 	}
 	/**
-	 * @param reponses the reponses to set
+	 * @param responses the responses to set
 	 */
-	public void setReponses(List<Reponse> reponses) {
-		this.reponses = reponses;
+	public void setResponses(List<Response> responses) {
+		this.responses = responses;
 	}	
 
 }
