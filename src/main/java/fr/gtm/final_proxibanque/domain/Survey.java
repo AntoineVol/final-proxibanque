@@ -17,7 +17,7 @@ public class Survey implements Serializable {
 	private LocalDate startDate;
 	private LocalDate endDate;
 	private LocalDate expectedDate;
-	private List<Reponse> reponses;
+	private List<Reponse> responses;
 	
 	// Getters & Setters
 	
