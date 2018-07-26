@@ -1,5 +1,7 @@
 package fr.gtm.final_proxibanque.domain;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,7 +14,11 @@ import javax.persistence.Id;
  *
  */
 @Entity
-public class Client {
+public class Client implements Serializable {
+	/**
+	 * Clé de serialisation
+	 */
+	private static final long serialVersionUID = 1L;
 	/**
 	 * Le clientNumber designe le numéro d'adhérent unique d'un client
 	 */

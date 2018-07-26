@@ -27,7 +27,7 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
 	@Bean
 	public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
 		final LocalContainerEntityManagerFactoryBean lcemfb = new LocalContainerEntityManagerFactoryBean();
-		lcemfb.setPersistenceUnitName("proxybanque_v4");
+		lcemfb.setPersistenceUnitName("proxibanque_v4");
 		return lcemfb;
 	}
 
