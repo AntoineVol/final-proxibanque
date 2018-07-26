@@ -14,7 +14,7 @@ public class Response {
 	
 	private Client client;
 	
-	//private Survey survey;
+	private Survey survey;
 	
 	
 	public Response() {
@@ -71,6 +71,16 @@ public class Response {
 	public void setClient(Client client) {
 		this.client = client;
 	}
+
+	public Survey getSurvey() {
+		return survey;
+	}
+
+	public void setSurvey(Survey survey) {
+		this.survey = survey;
+	}
+	
+	
 	
 	
 	
