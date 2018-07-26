@@ -7,23 +7,50 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+/**
+ * 
+ * @author 
+ * 
+ * La classe Response représente la réponse du client au sondage
+ *
+ */
 @Entity
 public class Response {
+	
+	/**
+	 * Identifiant d'une instance de Response au niveau de la base de données
+	 */
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
+	/**
+	 * Un commentaire laissé par un client pour un sondage
+	 */
 	private String comment;
+	
+	/**
+	 * avis favorable ou non du client au sondage
+	 */
 	private boolean positiveResponse;
+	
+	/**
+	 * Le client qui a donné un avis au sondage est-il un nouveau?
+	 */
 	private boolean newClient;
 	
+	/**
+	 * Le client qui a répondu au sondage positivement
+	 */
 	@ManyToOne
 	@JoinColumn(name="id_client", referencedColumnName="id")
 	private Client client;
 	
 
-	
+	/**
+	 * Le sondage en question-
+	 */
 	@ManyToOne
 	@JoinColumn(name="id_survey")
 	private Survey survey;
