@@ -22,7 +22,7 @@ public class Survey implements Serializable {
 	// Getters & Setters
 	
 	/**
-	 * @return the id of the survey
+	 * @return the id
 	 */
 	public Integer getId() {
 		return id;
@@ -34,7 +34,7 @@ public class Survey implements Serializable {
 		this.id = id;
 	}
 	/**
-	 * @return the startDate of the survey
+	 * @return the startDate
 	 */
 	public LocalDate getStartDate() {
 		return startDate;
@@ -46,7 +46,7 @@ public class Survey implements Serializable {
 		this.startDate = startDate;
 	}
 	/**
-	 * @return the endDate of the survey
+	 * @return the endDate
 	 */
 	public LocalDate getEndDate() {
 		return endDate;
@@ -58,7 +58,7 @@ public class Survey implements Serializable {
 		this.endDate = endDate;
 	}
 	/**
-	 * @return the expectedDate of the survey
+	 * @return the expectedDate
 	 */
 	public LocalDate getExpectedDate() {
 		return expectedDate;
@@ -70,7 +70,7 @@ public class Survey implements Serializable {
 		this.expectedDate = expectedDate;
 	}
 	/**
-	 * @return the reponses received for this survey
+	 * @return the reponses
 	 */
 	public List<Reponse> getReponses() {
 		return reponses;
@@ -80,6 +80,6 @@ public class Survey implements Serializable {
 	 */
 	public void setReponses(List<Reponse> reponses) {
 		this.reponses = reponses;
-	}
+	}	
 
 }
