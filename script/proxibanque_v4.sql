@@ -30,6 +30,16 @@ INSERT INTO `client` (`id`, `clientNumber`, `email`, `firstName`, `lastName`, `t
 (1, '16589354\r\n', 'steve.jobs@gmail.com', 'Steve', 'Jobs', '0603015986'),
 (2, '56996368', 'jim.morrisongmail.fr', 'Jim', 'Morrison', '0963568935');
 
+
+--
+-- Déchargement des données de la table `survey`
+--
+
+INSERT INTO `survey` (`id`, `endDate`, `expectedDate`, `startDate`) VALUES
+(1, '2018-07-25', '2018-07-25', '2018-07-20'),
+(2, NULL, '2018-07-26', '2018-08-03');
+COMMIT;
+
 --
 -- Déchargement des données de la table `response`
 --
@@ -41,14 +51,7 @@ INSERT INTO `response` (`id`, `comment`, `newClient`, `positiveResponse`, `id_cl
 (4, NULL, b'0', b'1', 2, 2),
 (5, 'L\'offre ne m\'interesse pas', b'0', b'0', NULL, 2);
 
---
--- Déchargement des données de la table `survey`
---
 
-INSERT INTO `survey` (`id`, `endDate`, `expectedDate`, `startDate`) VALUES
-(1, '2018-07-25', '2018-07-25', '2018-07-20'),
-(2, NULL, '2018-07-26', '2018-08-03');
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

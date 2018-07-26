@@ -9,7 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 import fr.gtm.final_proxibanque.business.ClientService;
 import fr.gtm.final_proxibanque.domain.Client;
 
-@RestController("/api/client")
+@RestController
+@RequestMapping("/client")
 public class ClientController {
 	
 	@Autowired
@@ -20,8 +21,8 @@ public class ClientController {
 		return clientService.read(id);
 	}
 	
-	@PostMapping
-	public Client add(@RequestBody final Client client) {
+	@PostMapping({"","/"})
+	public Client addClient(@RequestBody final Client client) {
 		return this.clientService.create(client);
 	}
 
