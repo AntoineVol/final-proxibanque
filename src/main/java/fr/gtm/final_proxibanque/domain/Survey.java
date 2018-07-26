@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  * 
@@ -26,6 +27,7 @@ public class Survey implements Serializable {
 	private LocalDate startDate;
 	private LocalDate endDate;
 	private LocalDate expectedDate;
+	@OneToMany(mappedBy="survey")
 	private List<Response> responses;
 	
 	// Getters & Setters
