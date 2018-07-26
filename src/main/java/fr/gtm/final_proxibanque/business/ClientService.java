@@ -1,5 +1,10 @@
 package fr.gtm.final_proxibanque.business;
 
-public class ClientService {
+import org.springframework.stereotype.Service;
+
+import fr.gtm.final_proxibanque.domain.Client;
+
+@Service
+public class ClientService extends CrudService<Client> {
 
 }
