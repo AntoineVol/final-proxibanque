@@ -1,9 +1,12 @@
 package fr.gtm.final_proxibanque.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-import fr.gtm.final_proxibanque.domain.Survey;
+import fr.gtm.final_proxibanque.domain.Response;
 
-public interface ResponseRepository extends JpaRepository<Survey, Integer>{
+
+@Repository
+public interface ResponseRepository extends JpaRepository<Response, Integer>{
 
 }

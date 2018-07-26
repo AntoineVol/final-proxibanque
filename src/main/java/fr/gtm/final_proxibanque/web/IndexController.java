@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 
 import fr.gtm.final_proxibanque.business.ClientService;
 import fr.gtm.final_proxibanque.business.ResponseService;
+import fr.gtm.final_proxibanque.business.SurveyService;
 
 
 @Controller
@@ -16,5 +17,7 @@ public class IndexController {
 	@Autowired
 	private ResponseService responseService;
 	
+	@Autowired
+	private SurveyService surveyService;
 
 }
