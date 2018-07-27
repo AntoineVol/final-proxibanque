@@ -51,6 +51,7 @@ public class IndexController {
 	public ModelAndView details(@RequestParam("id") final Integer id) {
 		final ModelAndView mav = new ModelAndView("details");
 		final List<Response> rep = this.surveyService.read(id).getResponses();
+		LOGGER.info("j'ai récupéré la liste des réponses d'un sondage grâce à son id -- méthode détails -- class IndexController");
 		mav.addObject("responses", rep);
 		mav.addObject("positif", this.surveyService.getPositiveCount(rep));
 		mav.addObject("negatif", rep.size() - this.surveyService.getPositiveCount(rep));
@@ -90,10 +91,11 @@ public class IndexController {
 		String message = "";
 		try {
 			this.surveyService.updateEndDate(dateFermeture);
+			LOGGER.info("j'ai mis à jour la date de fermeture du sondage -- méthode postaccueilF -- class IndexController");
 		} catch (final MauvaiseDateException e) {
 			message = e.getMessage();
+			IndexController.LOGGER.info(message);
 		}
-		IndexController.LOGGER.info(message);
 		final ModelAndView mav = new ModelAndView(IndexController.CHEMIN_ACCUEIL);
 		redirectAttr.addFlashAttribute("message", message);
 		return mav;
@@ -120,12 +122,17 @@ public class IndexController {
 			final RedirectAttributes redirectA) {
 		String message = "";
 		final Survey survey = new Survey();
+		LOGGER.info("je créé un sondage en locale -- méthode postaccueil -- class IndexController");
 		survey.setStartDate(dateOuverture);
+		LOGGER.info("je définis sa date d'ouverture -- méthode postaccueil -- class IndexController");
 		survey.setExpectedDate(dateFermeturePrevisionnelle);
+		LOGGER.info("je définis sa date de fermeture previsionnelle -- méthode postaccueil -- class IndexController");
 		try {
 			this.surveyService.create(survey);
+			LOGGER.info("je créé le sondage -- méthode postaccueil -- class IndexController");
 		} catch (final MauvaiseDateException e) {
 			message = e.getMessage();
+			IndexController.LOGGER.info(message);
 		}
 		final ModelAndView mav = new ModelAndView(IndexController.CHEMIN_ACCUEIL);
 		redirectA.addFlashAttribute("message", message);
@@ -143,6 +150,7 @@ public class IndexController {
 	@GetMapping({ "/accueil" })
 	public ModelAndView viewaccueil() {
 		final ModelAndView mav = new ModelAndView("index");
+		LOGGER.info("je me renseigne pour savoir s'il y a un sondage en cours -- méthode viewaccueil -- class IndexController");
 		final boolean isRunning = this.surveyService.isClosable();
 		mav.addObject("surveys", this.surveyService.getAll());
 		mav.addObject("isRunning", isRunning);
