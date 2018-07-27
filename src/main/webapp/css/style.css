@@ -1,6 +1,6 @@
-h1 {
-	text-align: center;
-}
+/* h1 { */
+/* 	text-align: center; */
+/* } */
 
 .positif-icon {
     height: 72px;
@@ -41,6 +41,8 @@ body {
 	align-items: center;
 }
 
+nav.navbar{
+	color: white;
+}
 
-	
 	

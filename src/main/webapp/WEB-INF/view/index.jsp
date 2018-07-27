@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
@@ -8,8 +9,11 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="<c:url value = "/css/style.css"></c:url>">
 <body>
-	<h1 class="titre">Sondage en cours</h1>
-	<div class="container-fluid">
+	
+	<nav class="navbar navbar-dark bg-dark ">
+		<h1 class="titre mx-auto">Gestion des sondages</h1>
+	</nav>
+	<div class="container-fluid py-5">
 		<div class="row">
 			<div class="col-md-6 ml-auto">
 				<div class="panel-body">
@@ -31,7 +35,7 @@
 									<td><c:out value="${survey.startDate}" /></td>
 									<td><c:out value="${survey.expectedDate}" /></td>
 									<td><c:out value="${survey.endDate}" /></td>
-									<td><a href="${details}${survey.id}" class="btn btn-info">Voir
+									<td><a href="${details}${survey.id}" class="btn btn-outline-dark">Voir
 											détails</a></td>
 								</tr>
 							</c:forEach>
@@ -41,7 +45,7 @@
 			</div>
 			<div class="col-md-3 ml-auto">
 				<div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
-					<div class="card-header">Fermer un sondage</div>
+					<div class="card-header">Cloturer le sondage en cours</div>
 					<div class="card-body">
 						<form action="" method="post">
 							<div class="form-group">
@@ -51,7 +55,7 @@
 							</div>
 							<div class="form-group">
 								<c:if test="${isRunning==true}">
-									<button type="submit" class="btn btn-info">Fermer le
+									<button type="submit" class="btn btn-outline-light">Fermer le
 										sondage</button>
 									<c:if test="${not empty message}">
 										<div class="alert alert-danger" role="alert">${message}</div>
@@ -87,7 +91,7 @@
 							</div>
 							<div class="form-group">
 								<c:if test="${isRunning==false}">
-									<button type="submit" class="btn btn-info">Créer</button>
+									<button type="submit" class="btn btn-secondary">Créer</button>
 									<c:if test="${not empty message}">
 										<div class="alert alert-danger" role="alert">${message}</div>
 									</c:if>
@@ -96,7 +100,7 @@
 								<c:if test="${isRunning==true}">
 									<button type="submit" class="btn btn-default"
 										disabled="disabled">Créer</button>
-									<div class="alert alert-warning" role="alert">Vous ne
+									<div class="alert alert-warning my-2" role="alert">Vous ne
 										pouvez pas créer un nouveau sondage, car il y a déjà un
 										sondage en cours</div>
 								</c:if>
