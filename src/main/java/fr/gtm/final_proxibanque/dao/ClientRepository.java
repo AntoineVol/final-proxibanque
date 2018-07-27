@@ -14,7 +14,7 @@ import fr.gtm.final_proxibanque.domain.Client;
  */
 @Repository
 public interface ClientRepository extends JpaRepository<Client, Integer> {
-		
-	public Client findByClientNumber(String clientNumber);
+
+	Client findByClientNumber(String clientNumber);
 
 }
