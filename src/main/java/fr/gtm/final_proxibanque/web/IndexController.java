@@ -44,31 +44,13 @@ public class IndexController {
 	@Autowired
 	private SurveyService surveyService;
 
-	@GetMapping({ "/details" })
-	public ModelAndView details(@RequestParam("id") final Integer id) {
-		final ModelAndView mav = new ModelAndView("details");
-		final List<Response> rep = this.surveyService.read(id).getResponses();
-		mav.addObject("responses", rep);
-		mav.addObject("positif", this.surveyService.getPositiveCount(rep));
-		mav.addObject("negatif", rep.size() - this.surveyService.getPositiveCount(rep));
-		mav.addObject("nc", this.surveyService.getNewClientCount(rep));
-		return mav;
-	}
+
 
 	@GetMapping({ "/index" })
 	public String index() {
 		return IndexController.CHEMIN_ACCUEIL;
 	}
 
-<<<<<<< Updated upstream
-	@PostMapping(value = { "/index", "/accueil" }, params = "dateFermeture")
-	public ModelAndView postacceuilF(
-			@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") final LocalDate dateFermeture) {
-		IndexController.LOGGER.info(dateFermeture.toString());
-		this.surveyService.updateEndDate(dateFermeture);
-		IndexController.LOGGER.info("je suis sorti");
-		final ModelAndView mav = new ModelAndView(IndexController.CHEMIN_ACCUEIL);
-=======
 	@GetMapping({ "/accueil" })
 	public ModelAndView viewaccueil() {
 		ModelAndView mav = new ModelAndView("index");
@@ -86,24 +68,9 @@ public class IndexController {
 		mav.addObject("positif",  this.surveyService.getPositiveCount(rep));
 		mav.addObject("negatif",  rep.size() - this.surveyService.getPositiveCount(rep));
 		mav.addObject("nc",  this.surveyService.getNewClientCount(rep));
->>>>>>> Stashed changes
 		return mav;
 
 	}
-<<<<<<< Updated upstream
-
-	@PostMapping(value = { "/index", "/accueil" }, params = "dateFermeturePrevisionnelle")
-	public ModelAndView postaccueil(@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") final LocalDate dateOuverture,
-			@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") final LocalDate dateFermeturePrevisionnelle) {
-
-		final Survey survey = new Survey();
-		survey.setStartDate(dateOuverture);
-		survey.setExpectedDate(dateFermeturePrevisionnelle);
-		this.surveyService.create(survey);
-		final ModelAndView mav = new ModelAndView(IndexController.CHEMIN_ACCUEIL);
-=======
-	
-	
 	
 	@PostMapping(value = { "/index", "/accueil"} , params = "dateFermeturePrevisionnelle")
 	public ModelAndView postaccueil(@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dateOuverture,@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dateFermeturePrevisionnelle, RedirectAttributes redirectA) {
@@ -118,20 +85,10 @@ public class IndexController {
 		}
 		ModelAndView mav = new ModelAndView(CHEMIN_ACCUEIL);
 		redirectA.addFlashAttribute("message",message);
->>>>>>> Stashed changes
 		return mav;
 
 	}
-<<<<<<< Updated upstream
 
-	@GetMapping({ "/accueil" })
-	public ModelAndView viewaccueil() {
-		final ModelAndView mav = new ModelAndView("index");
-		final int isRunning = this.surveyService.isClosable();
-		mav.addObject("surveys", this.surveyService.getAll());
-		mav.addObject("isRunning", isRunning);
-=======
-	
 	@PostMapping(value = { "/index", "/accueil"} , params = "dateFermeture")
 	public ModelAndView postacceuilF(@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dateFermeture, RedirectAttributes redirectAttr) {
 		String message="";
@@ -143,7 +100,6 @@ public class IndexController {
 		LOGGER.info(message);
 		ModelAndView mav = new ModelAndView(CHEMIN_ACCUEIL);
 		redirectAttr.addFlashAttribute("message",message);
->>>>>>> Stashed changes
 		return mav;
 	}
 

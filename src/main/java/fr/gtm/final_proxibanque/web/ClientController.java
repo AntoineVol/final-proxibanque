@@ -24,7 +24,6 @@ public class ClientController {
 
 	@Autowired
 	private ClientService clientService;
-<<<<<<< Updated upstream
 
 	/**
 	 * La methode addClient est un WebService déclenchant la création d'un nouveau
@@ -33,19 +32,10 @@ public class ClientController {
 	 * @param client
 	 *            Client à persister en base de donnée
 	 * @return Le client persisté
+	 * @throws MauvaiseDateException 
 	 */
 	@PostMapping({ "", "/" })
-	public Client addClient(@RequestBody final Client client) {
-=======
-	
-	@RequestMapping("/{id}")
-	public Client getClient(@PathVariable final Integer id){
-		return clientService.read(id);
-	}
-	
-	@PostMapping({"","/"})
 	public Client addClient(@RequestBody final Client client) throws MauvaiseDateException {
->>>>>>> Stashed changes
 		return this.clientService.create(client);
 	}
 
