@@ -31,7 +31,7 @@
 							<c:forEach var="survey" items="${surveys}">
 								<c:url value="/details.html?id=" var="details" />
 								<tr>
-									<td><c:out value="${survey.id}" /></td>
+									<td class="id" style="background-color: #2c333a;"><c:out value="${survey.id}" /></td>
 									<td><c:out value="${survey.startDate}" /></td>
 									<td><c:out value="${survey.expectedDate}" /></td>
 									<td><c:out value="${survey.endDate}" /></td>

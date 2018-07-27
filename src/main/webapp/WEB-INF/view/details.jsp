@@ -30,7 +30,7 @@
 							<c:forEach var="reponse" items="${responses}">
 								<c:if test="${not empty reponse.comment}">
 									<tr>
-										<td>${reponse.id}</td>
+										<td class="id" style="background-color: #2c333a;">${reponse.id}</td>
 										<td>${reponse.comment}</td>
 									</tr>
 								</c:if>
