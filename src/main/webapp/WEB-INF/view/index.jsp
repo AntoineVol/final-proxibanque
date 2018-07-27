@@ -66,7 +66,7 @@
 										disabled="disabled">Fermer le sondage</button>
 									<div class="alert alert-warning my-2" role="alert">Vous ne
 										pouvez pas fermer de sondage, car il n'y a pas de sondage en
-										cours</div>
+										cours.</div>
 								</c:if>
 							</div>
 						</form>
@@ -102,7 +102,7 @@
 										disabled="disabled">Créer</button>
 									<div class="alert alert-warning my-2" role="alert">Vous ne
 										pouvez pas créer un nouveau sondage, car il y a déjà un
-										sondage en cours</div>
+										sondage en cours.</div>
 								</c:if>
 							</div>
 						</form>
