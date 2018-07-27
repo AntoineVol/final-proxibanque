@@ -12,55 +12,31 @@
 		<div class="row">
 			<div class="col">
 				<div class="panel-body">
-
 					<table class="table">
-
-						<thead>
-
+						<thead class="thead-dark">
 							<tr>
-
-								<td>Id:</td>
-
-								<td>Date d'ouverture:</td>
-								
-								<td>Date de fermeture prévisionnelle:</td>
-
-								<td>Date de fermeture:</td>
-
-								<td>Détails:</td>
-
+								<th scope="col">Id:</th>
+								<th scope="col">Date d'ouverture:</th>
+								<th scope="col">Date de fermeture prévisionnelle:</th>
+								<th scope="col">Date de fermeture:</th>
+								<th scope="col">Détails:</th>
 							</tr>
-
 						</thead>
-
 						<tbody>
-
 							<c:forEach var="survey" items="${surveys}">
 								<c:url value="/details.html?id=" var="details" />
 								<tr>
 									<td><c:out value="${survey.id}" /></td>
-
-									<td><c:out value="${survey.startDate}" /></td>
-									
+									<td><c:out value="${survey.startDate}" /></td>								
 									<td><c:out value="${survey.expectedDate}" /></td>
-
 									<td><c:out value="${survey.endDate}" /></td>
-
 									<td><a href="${details}${survey.id}" class="btn btn-info">Voir
 											détails</a></td>
-
-
 								</tr>
-
 							</c:forEach>
-
-
 						</tbody>
-
 					</table>
-
 				</div>
-
 			</div>
 			<div class="col">
 				<h4>Créer un sondage</h4>
@@ -78,7 +54,7 @@
 					</div>
 					<div class="form-group">
 						<c:if test="${isRunning==false}">
-						<button type="submit" class="btn btn-success btn-lg">Créer</button>
+						<button type="submit" class="btn btn-info">Créer</button>
 						<c:if test="${not empty message}">
 							<div class="alert alert-danger" role="alert">${message}</div>
 							</c:if>
@@ -92,8 +68,10 @@
 				</form>
 			</div>
 		</div>
+		</div>
+		<div class="container-fluid">
 		<div class="row">
-			<div class="col-xs-2">
+			<div class="col-xs-3">
 				<form action="" method="post">
 					<div class="form-group">
 						<label for="dateFermeture">Date de fermeture:</label> <input
@@ -102,7 +80,7 @@
 					</div>
 					<div class="form-group">
 						<c:if test="${isRunning==true}">
-							<button type="submit" class="btn btn-success btn-lg">Fermer le sondage</button>
+							<button type="submit" class="btn btn-info">Fermer le sondage</button>
 							<c:if test="${not empty message}">
 							<div class="alert alert-danger" role="alert">${message}</div>
 							</c:if>
