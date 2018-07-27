@@ -12,6 +12,14 @@ h1 {
     height: 72px;
 }
 
+.taillepositif{
+	font-size: 36px;
+}
+
 .taillenegatif{
-	font-size: 72px;
+	font-size: 36px;
+}
+
+.taillenewclient{
+	font-size: 36px;
 }

@@ -20,7 +20,7 @@ import org.springframework.web.servlet.view.JstlView;
  * bean. Un paramétrage du Cors permet aussi l'echange de requête entre le back
  * et le front
  *
- * @author Kamir Elsisi & Steven Roman & Antoine Volatron
+ * @author Kamir Elsisi, Steven Roman, Antoine Volatron
  *
  */
 @SuppressWarnings("deprecation")

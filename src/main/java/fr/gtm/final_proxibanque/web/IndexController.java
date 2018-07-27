@@ -25,7 +25,7 @@ import fr.gtm.final_proxibanque.domain.Survey;
  * La class IndexController permet de dispatcher les requetes HTTP concernant le
  * backend
  *
- * @author Kamir Elsisi & Steven Roman & Antoine Volatron
+ * @author Kamir Elsisi, Steven Roman, Antoine Volatron
  *
  */
 @Controller
