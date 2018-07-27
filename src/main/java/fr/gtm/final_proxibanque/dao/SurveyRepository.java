@@ -5,6 +5,13 @@ import org.springframework.stereotype.Repository;
 
 import fr.gtm.final_proxibanque.domain.Survey;
 
+/**
+ * L'interface SurveyRepository permet de lier l'entité Client à un JPA
+ * repository
+ *
+ * @author Kamir Elsisi & Steven Roman & Antoine Volatron
+ *
+ */
 @Repository
 public interface SurveyRepository extends JpaRepository<Survey, Integer> {
 

@@ -14,6 +14,15 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
+/**
+ * Le MvcConfig a pour vocation de parametrer Spring en le lien à sa
+ * persistence, au viwResolver, à la gestion des transaction, au container de
+ * bean. Un paramétrage du Cors permet aussi l'echange de requête entre le back
+ * et le front
+ *
+ * @author Kamir Elsisi & Steven Roman & Antoine Volatron
+ *
+ */
 @SuppressWarnings("deprecation")
 @EnableWebMvc
 @Configuration
@@ -35,18 +44,18 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
 	}
 
 	@Bean
+	public ViewResolver internalResourceViewResolver() {
+		final InternalResourceViewResolver bean = new InternalResourceViewResolver();
+		bean.setViewClass(JstlView.class);
+		bean.setPrefix("/WEB-INF/view/");
+		bean.setSuffix(".jsp");
+		return bean;
+	}
+
+	@Bean
 	public PlatformTransactionManager transactionManager() {
 		final PlatformTransactionManager tm = new JpaTransactionManager(this.entityManagerFactory().getObject());
 		return tm;
-	}
-	
-	@Bean
-	public ViewResolver internalResourceViewResolver() {
-	    InternalResourceViewResolver bean = new InternalResourceViewResolver();
-	    bean.setViewClass(JstlView.class);
-	    bean.setPrefix("/WEB-INF/view/");
-	    bean.setSuffix(".jsp");
-	    return bean;
 	}
 
 }

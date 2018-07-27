@@ -7,12 +7,14 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import fr.gtm.final_proxibanque.domain.MauvaiseDateException;
+
 public abstract class CrudService<ENTITY> {
 
 	@Autowired
 	protected JpaRepository<ENTITY, Integer> repo;
 
-	public ENTITY create(final ENTITY entity) {
+	public ENTITY create(final ENTITY entity) throws MauvaiseDateException {
 		return this.repo.save(entity);
 	}
 

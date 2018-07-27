@@ -9,24 +9,32 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import antlr.ParserSharedInputState;
 import fr.gtm.final_proxibanque.business.ClientService;
 import fr.gtm.final_proxibanque.business.ResponseService;
 import fr.gtm.final_proxibanque.business.SurveyService;
+import fr.gtm.final_proxibanque.domain.MauvaiseDateException;
 import fr.gtm.final_proxibanque.domain.Response;
 import fr.gtm.final_proxibanque.domain.Survey;
 
+/**
+ * La class IndexController permet de dispatcher les requetes HTTP concernant le
+ * backend
+ *
+ * @author Kamir Elsisi & Steven Roman & Antoine Volatron
+ *
+ */
 @Controller
 public class IndexController {
 
-	private static final Logger LOGGER = LoggerFactory
-			.getLogger(IndexController.class);
-	
+	private final static String CHEMIN_ACCUEIL = "redirect:/accueil.html";
+
+	private static final Logger LOGGER = LoggerFactory.getLogger(IndexController.class);
+
 	@Autowired
 	private ClientService clientService;
 
@@ -36,7 +44,6 @@ public class IndexController {
 	@Autowired
 	private SurveyService surveyService;
 
-	private final static String CHEMIN_ACCUEIL = "redirect:/accueil.html";
 
 	@GetMapping({ "/index" })
 	public String index() {
@@ -46,7 +53,7 @@ public class IndexController {
 	@GetMapping({ "/accueil" })
 	public ModelAndView viewaccueil() {
 		ModelAndView mav = new ModelAndView("index");
-		int isRunning = this.surveyService.isClosable();
+		boolean isRunning = this.surveyService.isClosable();
 		mav.addObject("surveys", this.surveyService.getAll());
 		mav.addObject("isRunning", isRunning);
 		return mav;
@@ -61,32 +68,38 @@ public class IndexController {
 		mav.addObject("negatif",  rep.size() - this.surveyService.getPositiveCount(rep));
 		mav.addObject("nc",  this.surveyService.getNewClientCount(rep));
 		return mav;
+
 	}
 	
-	
-	
 	@PostMapping(value = { "/index", "/accueil"} , params = "dateFermeturePrevisionnelle")
-	public ModelAndView postaccueil(@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dateOuverture,@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dateFermeturePrevisionnelle) {
-		
+	public ModelAndView postaccueil(@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dateOuverture,@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dateFermeturePrevisionnelle, RedirectAttributes redirectA) {
+		String message="";
 		Survey survey = new Survey();
 		survey.setStartDate(dateOuverture);
 		survey.setExpectedDate(dateFermeturePrevisionnelle);
-		this.surveyService.create(survey);
+		try {
+			this.surveyService.create(survey);
+		} catch (MauvaiseDateException e) {
+			message=e.getMessage();
+		}
 		ModelAndView mav = new ModelAndView(CHEMIN_ACCUEIL);
+		redirectA.addFlashAttribute("message",message);
 		return mav;
-		
+
 	}
-	
+
 	@PostMapping(value = { "/index", "/accueil"} , params = "dateFermeture")
-	public ModelAndView postacceuilF(@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dateFermeture) {
-		LOGGER.info(dateFermeture.toString());
-		this.surveyService.updateEndDate(dateFermeture);
-		LOGGER.info("je suis sorti");
-		ModelAndView mav = new ModelAndView(CHEMIN_ACCUEIL);	
+	public ModelAndView postacceuilF(@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dateFermeture, RedirectAttributes redirectAttr) {
+		String message="";
+		try {
+			this.surveyService.updateEndDate(dateFermeture);
+		} catch (MauvaiseDateException e) {
+			message=e.getMessage();
+		}
+		LOGGER.info(message);
+		ModelAndView mav = new ModelAndView(CHEMIN_ACCUEIL);
+		redirectAttr.addFlashAttribute("message",message);
 		return mav;
-		
 	}
-
-
 
 }

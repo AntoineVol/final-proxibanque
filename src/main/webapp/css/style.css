@@ -1,0 +1,17 @@
+h1 {
+	text-align: center;
+}
+
+.positif-icon {
+    height: 72px;
+}
+.negatif-icon {
+    height: 72px;
+}
+.newclient-icon {
+    height: 72px;
+}
+
+.taillenegatif{
+	font-size: 72px;
+}
