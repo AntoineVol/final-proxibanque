@@ -17,9 +17,15 @@ public class ClientController {
 	private ClientService clientService;
 	
 	@RequestMapping("/{id}")
-	public Client getClient(@PathVariable final Integer id){
+	public Client getClientById(@PathVariable final Integer id){
 		return clientService.read(id);
 	}
+	
+	/*@RequestMapping("/{number}")
+	public Client getClientByNumber(@PathVariable final String number){
+		return clientService.readByNumer(numero);
+	}*/
+	
 	
 	@PostMapping({"","/"})
 	public Client addClient(@RequestBody final Client client) {
