@@ -3,6 +3,8 @@ package fr.gtm.final_proxibanque.web;
 import java.time.LocalDate;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +26,8 @@ public class SurveyController {
 
 	@Autowired
 	private SurveyService surveyService;
+	
+	private static final Logger LOGGER = LoggerFactory.getLogger(SurveyController.class);
 
 	/**
 	 * La methode getSurveyDate est un WebService permettant de retourner un le
@@ -39,11 +43,12 @@ public class SurveyController {
 		for (final Survey s : survies) {
 			if ((s.getStartDate().isBefore(today) || s.getStartDate().isEqual(today))
 					&& (s.getEndDate() == null || s.getEndDate().isEqual(today) || s.getEndDate().isAfter(today))) {
-
+				LOGGER.info("je retourne un sondage -- méthode getSurveyDate -- class SurveyController");
 				return s;
 			}
 		}
 
+		LOGGER.info("je retourne null car je n'ai pas trouvé de sondage -- méthode getSurveyDate -- class SurveyController");
 		return null;
 
 	}
@@ -58,6 +63,7 @@ public class SurveyController {
 	 */
 	@RequestMapping("/{id}")
 	public Survey getSurveyId(@PathVariable final Integer id) {
+		LOGGER.info("je retourne un sondage grâce à son id -- méthode getSurveyId -- class SurveyController");
 		return this.surveyService.read(id);
 	}
 

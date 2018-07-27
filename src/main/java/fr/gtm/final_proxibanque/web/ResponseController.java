@@ -1,5 +1,7 @@
 package fr.gtm.final_proxibanque.web;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,6 +25,8 @@ public class ResponseController {
 
 	@Autowired
 	private ResponseService responseService;
+	
+	private static final Logger LOGGER = LoggerFactory.getLogger(ResponseController.class);
 
 	/**
 	 * La methode addResponse est un WebService permettant de persister en base de
@@ -38,6 +42,7 @@ public class ResponseController {
 
 	@PostMapping({ "", "/" })
 	public Response addResponse(@RequestBody final Response response) throws MauvaiseDateException {
+		LOGGER.info("J'ajoute une réponse en base -- méthode addResponse -- class ResponseController");
 		return this.responseService.create(response);
 	}
 

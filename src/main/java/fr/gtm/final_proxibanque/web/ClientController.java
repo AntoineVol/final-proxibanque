@@ -1,5 +1,7 @@
 package fr.gtm.final_proxibanque.web;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,6 +27,7 @@ public class ClientController {
 	@Autowired
 	private ClientService clientService;
 
+	private static final Logger LOGGER = LoggerFactory.getLogger(ClientController.class);
 
 	/**
 	 * La methode addClient est un WebService déclenchant la création d'un nouveau
@@ -39,7 +42,7 @@ public class ClientController {
 	 */
 	@PostMapping({ "", "/" })
 	public Client addClient(@RequestBody final Client client) throws MauvaiseDateException {
-
+		LOGGER.info("un client a été créé en base -- méthode addClient -- class ClientController");
 		return this.clientService.create(client);
 	}
 
@@ -53,11 +56,13 @@ public class ClientController {
 	 */
 	@RequestMapping("/{id}")
 	public Client getClient(@PathVariable final Integer id) {
+		LOGGER.info("Je récupere un client grâce à son id -- méthode getClient -- class ClientController");
 		return this.clientService.read(id);
 	}
 	
 	@RequestMapping("/numero/{num}")
 	public Client getClient(@PathVariable final String num) {
+		LOGGER.info("Je récupere un client grâce à son numéro -- méthode getClient -- class ClientController");
 		return this.clientService.findByClientNumber(num);
 	}
 
