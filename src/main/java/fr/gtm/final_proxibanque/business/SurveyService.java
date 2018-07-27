@@ -99,7 +99,9 @@ public class SurveyService extends CrudService<Survey> {
 
 	/**
 	 * La methode updateEndDate met à jour la date de fin d'un sondage et la
-	 * persiste
+	 * persiste. Cette méthode n'est valable que pour un sondage actif. Si la date
+	 * de fermeture est antérieur à la date d'ouverture, une erreur est renvoyé pour
+	 * un affichage dans la JSP d'un message d'erreur.
 	 *
 	 * @param date
 	 *            Date de fin définie pour le sondage
