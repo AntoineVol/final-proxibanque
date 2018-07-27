@@ -144,7 +144,12 @@
 			<version>2.9.6</version>
 		</dependency>
 
-
+		<!-- dependance pour la gestion des dates à travers le protocole HTTP -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.datatype</groupId>
+			<artifactId>jackson-datatype-jsr310</artifactId>
+			<version>2.9.6</version>
+		</dependency>
 
 
 		<!-- dependances junit -->
