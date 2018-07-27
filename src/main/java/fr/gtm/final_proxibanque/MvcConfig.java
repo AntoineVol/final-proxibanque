@@ -29,13 +29,26 @@ import org.springframework.web.servlet.view.JstlView;
 @ComponentScan(basePackages = { "fr.gtm.final_proxibanque.web", "fr.gtm.final_proxibanque.business" })
 @EnableJpaRepositories(basePackages = { "fr.gtm.final_proxibanque.dao" })
 public class MvcConfig extends WebMvcConfigurerAdapter {
+	static final int CORS_AGE = 3600;
 
+	/**
+	 * Le addCorsMappings permet de receptionner les requêtes venant d'un autres
+	 * domaine. Dans notre cas la partie front étant du coté d'angular, ce
+	 * paramétrage nous permet d'échanger à travers les deux ports
+	 *
+	 **/
 	@Override
 	public void addCorsMappings(final CorsRegistry registry) {
 		registry.addMapping("/**").allowedOrigins("*").allowedMethods("*").allowedHeaders("*").allowCredentials(true)
-				.maxAge(3600);
+				.maxAge(MvcConfig.CORS_AGE);
 	}
 
+	/**
+	 * Le LocalContainerEntityManagerFactoryBean permet de parametrer le container
+	 * de bean à partir de la persistence paramétrer dans le fichier persistence.xml
+	 *
+	 * @return Le conteneur de bean
+	 */
 	@Bean
 	public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
 		final LocalContainerEntityManagerFactoryBean lcemfb = new LocalContainerEntityManagerFactoryBean();
@@ -43,6 +56,12 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
 		return lcemfb;
 	}
 
+	/**
+	 * La methode internalResourceViewResolver permet de paramétrer ou rechercher
+	 * les pages JSP lors de leurs appel dans les controller
+	 *
+	 * @return Le bean de la JSP
+	 */
 	@Bean
 	public ViewResolver internalResourceViewResolver() {
 		final InternalResourceViewResolver bean = new InternalResourceViewResolver();
@@ -52,10 +71,15 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
 		return bean;
 	}
 
+	/**
+	 * Le transactionManager gère les différentes transaction avec la base de
+	 * données
+	 *
+	 * @return La platform de transaction
+	 */
 	@Bean
 	public PlatformTransactionManager transactionManager() {
-		final PlatformTransactionManager tm = new JpaTransactionManager(this.entityManagerFactory().getObject());
-		return tm;
+		return new JpaTransactionManager(this.entityManagerFactory().getObject());
 	}
 
 }

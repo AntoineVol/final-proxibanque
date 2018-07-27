@@ -14,8 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import fr.gtm.final_proxibanque.business.ClientService;
-import fr.gtm.final_proxibanque.business.ResponseService;
 import fr.gtm.final_proxibanque.business.SurveyService;
 import fr.gtm.final_proxibanque.domain.MauvaiseDateException;
 import fr.gtm.final_proxibanque.domain.Response;
@@ -36,69 +34,118 @@ public class IndexController {
 	private static final Logger LOGGER = LoggerFactory.getLogger(IndexController.class);
 
 	@Autowired
-	private ClientService clientService;
-
-	@Autowired
-	private ResponseService responseService;
-
-	@Autowired
 	private SurveyService surveyService;
 
+	/**
+	 * La méthode details permet d'accèder à la JSP détaillant les réponses d'un
+	 * sondage. Cette JSP contient un tableau contenant tous les commentaires des
+	 * réponses négatives, un indicateur de réponse positive et négative, ainsi que
+	 * le nombre de nouveau client s'étant inscrit pour répondre positivement au
+	 * questionnaire
+	 *
+	 * @param id
+	 *            Identifiant du sondage
+	 * @return La JSP de détail du sondage
+	 */
+	@GetMapping({ "/details" })
+	public ModelAndView details(@RequestParam("id") final Integer id) {
+		final ModelAndView mav = new ModelAndView("details");
+		final List<Response> rep = this.surveyService.read(id).getResponses();
+		mav.addObject("responses", rep);
+		mav.addObject("positif", this.surveyService.getPositiveCount(rep));
+		mav.addObject("negatif", rep.size() - this.surveyService.getPositiveCount(rep));
+		mav.addObject("nc", this.surveyService.getNewClientCount(rep));
+		return mav;
 
+	}
+
+	/**
+	 * La méthode index lance une redirection vers l'url d'accueil
+	 *
+	 * @return L'url de la page d'accueil
+	 */
 	@GetMapping({ "/index" })
 	public String index() {
-		return CHEMIN_ACCUEIL;
+		return IndexController.CHEMIN_ACCUEIL;
 	}
 
-	@GetMapping({ "/accueil" })
-	public ModelAndView viewaccueil() {
-		ModelAndView mav = new ModelAndView("index");
-		boolean isRunning = this.surveyService.isClosable();
-		mav.addObject("surveys", this.surveyService.getAll());
-		mav.addObject("isRunning", isRunning);
+	/**
+	 * La méthode postacceuilF est la méthode de validation du formulaire qui
+	 * paramètre la date de cloture d'un sondage. Cette methode vérifie que la date
+	 * renseignée est supérieure à la date de début du sondage en cours. Si la
+	 * condition est remplie, la date de cloture est persisté en base pour le
+	 * sondage en question
+	 *
+	 * @param dateFermeture
+	 *            Date à laquelle le formulaire se cloturera
+	 * @param redirectAttr
+	 *            Message d'erreur transmis par l'URL en cas de remonté d'erreur
+	 *            (date de cloture anterieur à la date de début)
+	 * @return La JSP d'acceuil, listant les sondages
+	 */
+	@PostMapping(value = { "/index", "/accueil" }, params = "dateFermeture")
+	public ModelAndView postacceuilF(
+			@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") final LocalDate dateFermeture,
+			final RedirectAttributes redirectAttr) {
+		String message = "";
+		try {
+			this.surveyService.updateEndDate(dateFermeture);
+		} catch (final MauvaiseDateException e) {
+			message = e.getMessage();
+		}
+		IndexController.LOGGER.info(message);
+		final ModelAndView mav = new ModelAndView(IndexController.CHEMIN_ACCUEIL);
+		redirectAttr.addFlashAttribute("message", message);
 		return mav;
 	}
-	
-	@GetMapping({ "/details" })
-	public ModelAndView details(@RequestParam("id") Integer id) {
-		ModelAndView mav = new ModelAndView("details");
-		List<Response> rep = this.surveyService.read(id).getResponses();
-		mav.addObject("responses", rep);
-		mav.addObject("positif",  this.surveyService.getPositiveCount(rep));
-		mav.addObject("negatif",  rep.size() - this.surveyService.getPositiveCount(rep));
-		mav.addObject("nc",  this.surveyService.getNewClientCount(rep));
-		return mav;
 
-	}
-	
-	@PostMapping(value = { "/index", "/accueil"} , params = "dateFermeturePrevisionnelle")
-	public ModelAndView postaccueil(@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dateOuverture,@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dateFermeturePrevisionnelle, RedirectAttributes redirectA) {
-		String message="";
-		Survey survey = new Survey();
+	/**
+	 * La méthode postaccueil est la méthode de validation du formulaire qui crée un
+	 * nouveau sondage.Cette methode vérifie que la date de fermeture previsionnelle
+	 * renseignée est supérieure à la date de début. Si la condition est remplie, le
+	 * sondage est persistée en base.
+	 *
+	 * @param dateOuverture
+	 *            Date à laquelle le sondage sera accessible aux clients
+	 * @param dateFermeturePrevisionnelle
+	 *            Date de fin prévue. Cette information est purement informative
+	 * @param redirectA
+	 *            Message d'erreur transmis par l'URL en cas de remonté d'erreur
+	 *            (date de cloture anterieur à la date de début)
+	 * @return La JSP d'acceuil, listant les sondages
+	 */
+	@PostMapping(value = { "/index", "/accueil" }, params = "dateFermeturePrevisionnelle")
+	public ModelAndView postaccueil(@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") final LocalDate dateOuverture,
+			@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") final LocalDate dateFermeturePrevisionnelle,
+			final RedirectAttributes redirectA) {
+		String message = "";
+		final Survey survey = new Survey();
 		survey.setStartDate(dateOuverture);
 		survey.setExpectedDate(dateFermeturePrevisionnelle);
 		try {
 			this.surveyService.create(survey);
-		} catch (MauvaiseDateException e) {
-			message=e.getMessage();
+		} catch (final MauvaiseDateException e) {
+			message = e.getMessage();
 		}
-		ModelAndView mav = new ModelAndView(CHEMIN_ACCUEIL);
-		redirectA.addFlashAttribute("message",message);
+		final ModelAndView mav = new ModelAndView(IndexController.CHEMIN_ACCUEIL);
+		redirectA.addFlashAttribute("message", message);
 		return mav;
 
 	}
 
-	@PostMapping(value = { "/index", "/accueil"} , params = "dateFermeture")
-	public ModelAndView postacceuilF(@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dateFermeture, RedirectAttributes redirectAttr) {
-		String message="";
-		try {
-			this.surveyService.updateEndDate(dateFermeture);
-		} catch (MauvaiseDateException e) {
-			message=e.getMessage();
-		}
-		LOGGER.info(message);
-		ModelAndView mav = new ModelAndView(CHEMIN_ACCUEIL);
-		redirectAttr.addFlashAttribute("message",message);
+	/**
+	 * La méthode viewaccueil affiche la JSP listant les sondages. On y trouve
+	 * également un formulaire de création de sondage et un formulaire pour
+	 * paramétrer la date de cloture d'un sondage
+	 * 
+	 * @return La JSP d'acceuil, listant les sondages
+	 */
+	@GetMapping({ "/accueil" })
+	public ModelAndView viewaccueil() {
+		final ModelAndView mav = new ModelAndView("index");
+		final boolean isRunning = this.surveyService.isClosable();
+		mav.addObject("surveys", this.surveyService.getAll());
+		mav.addObject("isRunning", isRunning);
 		return mav;
 	}
 

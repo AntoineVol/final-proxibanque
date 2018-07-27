@@ -35,6 +35,7 @@ public class SurveyService extends CrudService<Survey> {
 					"La date de fermeture prévisionnelle doit être postérieure à la date d'ouverture du sondage");
 		}
 		this.repo.save(survey);
+		SurveyService.LOGGER.debug("Sondage persisté en base");
 		return survey;
 	}
 
@@ -77,31 +78,6 @@ public class SurveyService extends CrudService<Survey> {
 	public SurveyRepository getRepo() {
 		return (SurveyRepository) this.repo;
 	}
-	
-/**
- * La methode updateEndDate met à jour la date de fin d'un sondage et la
- * persiste
- * 
- * @param date
- *            Date de fin définie pour le sondage
- * @throws MauvaiseDateException
- *             Erreur relever si la date de fin rensigné est antérieur à la date
- *             de début de sondage
- */
-	
-	public void updateEndDate(LocalDate date) throws MauvaiseDateException {
-		List<Survey> surveys = this.repo.findAll();
-		LocalDate today = LocalDate.now();
-		for (Survey survey : surveys) {
-			if(survey.getEndDate()==null||survey.getEndDate().isAfter(today)) {
-				if(date.isBefore(survey.getStartDate())) {
-					throw new MauvaiseDateException("La date de fermeture doit être postérieure à la date d'ouverture du sondage");
-				}
-				survey.setEndDate(date);
-				this.update(survey);
-			}
-		}
-	}
 
 	/**
 	 * La methode isClosable vérifie si il existe un sondage actif
@@ -111,14 +87,40 @@ public class SurveyService extends CrudService<Survey> {
 	 */
 	public boolean isClosable() {
 		boolean isRunning = false;
-		LocalDate today = LocalDate.now();
-		List<Survey> surveys = this.repo.findAll();
-		for (Survey survey : surveys) {
-			if(survey.getEndDate()==null||survey.getEndDate().isAfter(today)) {
+		final LocalDate today = LocalDate.now();
+		final List<Survey> surveys = this.repo.findAll();
+		for (final Survey survey : surveys) {
+			if (survey.getEndDate() == null || survey.getEndDate().isAfter(today)) {
 				isRunning = true;
 			}
 		}
 		return isRunning;
+	}
+
+	/**
+	 * La methode updateEndDate met à jour la date de fin d'un sondage et la
+	 * persiste
+	 *
+	 * @param date
+	 *            Date de fin définie pour le sondage
+	 * @throws MauvaiseDateException
+	 *             Erreur relever si la date de fin rensigné est antérieur à la date
+	 *             de début de sondage
+	 */
+
+	public void updateEndDate(final LocalDate date) throws MauvaiseDateException {
+		final List<Survey> surveys = this.repo.findAll();
+		final LocalDate today = LocalDate.now();
+		for (final Survey survey : surveys) {
+			if (survey.getEndDate() == null || survey.getEndDate().isAfter(today)) {
+				if (date.isBefore(survey.getStartDate())) {
+					throw new MauvaiseDateException(
+							"La date de fermeture doit être postérieure à la date d'ouverture du sondage");
+				}
+				survey.setEndDate(date);
+				this.update(survey);
+			}
+		}
 	}
 
 }

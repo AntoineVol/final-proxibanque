@@ -2,6 +2,7 @@ package fr.gtm.final_proxibanque.domain;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,6 +23,7 @@ public class Client implements Serializable {
 	/**
 	 * Le clientNumber designe le numéro d'adhérent unique d'un client
 	 */
+	@Column(length = 8)
 	private String clientNumber;
 	/**
 	 * L'email designe l'adresse email du client
@@ -154,7 +156,7 @@ public class Client implements Serializable {
 
 	/**
 	 * Setter du tel, le numero de téléphone du client
-	 * 
+	 *
 	 * @param tel
 	 *            Numero de telephone du client
 	 */

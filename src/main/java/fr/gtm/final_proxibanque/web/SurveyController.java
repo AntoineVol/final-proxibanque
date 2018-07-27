@@ -1,7 +1,6 @@
 package fr.gtm.final_proxibanque.web;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,8 +34,7 @@ public class SurveyController {
 	@RequestMapping({ "", "/" })
 	public Survey getSurveyDate() {
 		final LocalDate today = LocalDate.now();
-		List<Survey> survies = new ArrayList<>();
-		survies = this.surveyService.getAll();
+		final List<Survey> survies = this.surveyService.getAll();
 
 		for (final Survey s : survies) {
 			if ((s.getStartDate().isBefore(today) || s.getStartDate().isEqual(today))

@@ -16,6 +16,9 @@ import javax.persistence.OneToMany;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
+ * La class Survey represente des sondages définis par une date de début, une
+ * date de fin prévue et une date de cloture Les sondages sont associés à leurs
+ * réponses positive ou négative
  *
  * @author Kamir Elsisi, Steven Roman, Antoine Volatron
  *
