@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  *
- * @author Kamir, Antoine, Steven
+ * @author Kamir Elsisi, Steven Roman, Antoine Volatron
  *
  */
 

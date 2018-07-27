@@ -8,8 +8,8 @@ import fr.gtm.final_proxibanque.domain.Client;
 /**
  * L'interface ClientRepository permet de lier l'entité Client à un JPA
  * repository
- * 
- * @author Kamir Elsisi & Steven Roman & Antoine Volatron
+ *
+ * @author Kamir Elsisi, Steven Roman, Antoine Volatron
  *
  */
 @Repository

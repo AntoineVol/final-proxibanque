@@ -8,7 +8,7 @@ import fr.gtm.final_proxibanque.domain.Client;
 /**
  * Le ClientService est le service apparenté l'entité Client
  *
- * @author Kamir Elsisi & Steven Roman & Antoine Volatron
+ * @author Kamir Elsisi, Steven Roman, Antoine Volatron
  *
  */
 @Service

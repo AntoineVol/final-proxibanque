@@ -16,7 +16,7 @@ import fr.gtm.final_proxibanque.domain.Survey;
  * La class ResponseController est un web service qui permet de dispatcher les
  * requetes HTTP concernant l'entité Response
  *
- * @author Kamir Elsisi & Steven Roman & Antoine Volatron
+ * @author Kamir Elsisi, Steven Roman, Antoine Volatron
  *
  */
 @RestController

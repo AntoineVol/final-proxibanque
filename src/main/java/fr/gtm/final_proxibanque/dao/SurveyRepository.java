@@ -9,7 +9,7 @@ import fr.gtm.final_proxibanque.domain.Survey;
  * L'interface SurveyRepository permet de lier l'entité Client à un JPA
  * repository
  *
- * @author Kamir Elsisi & Steven Roman & Antoine Volatron
+ * @author Kamir Elsisi, Steven Roman, Antoine Volatron
  *
  */
 @Repository

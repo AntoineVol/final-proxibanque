@@ -10,7 +10,7 @@ import javax.persistence.Id;
 /**
  * La classe client designe un client de la banque Proxibanque
  *
- * @author Kamir Elsisi & Steven Roman & Antoine Volatron
+ * @author Kamir Elsisi, Steven Roman, Antoine Volatron
  *
  */
 @Entity
@@ -104,6 +104,9 @@ public class Client implements Serializable {
 
 	/**
 	 * Setter du clientNumber, le numero d'adhesion du client
+	 *
+	 * @param clientNumber
+	 *            Numero d'identifiant à 8 chiffre du client
 	 */
 	public void setClientNumber(final String clientNumber) {
 		this.clientNumber = clientNumber;
@@ -111,6 +114,9 @@ public class Client implements Serializable {
 
 	/**
 	 * Setter du email, l'email du client
+	 *
+	 * @param email
+	 *            Email du client
 	 */
 	public void setEmail(final String email) {
 		this.email = email;
@@ -118,6 +124,9 @@ public class Client implements Serializable {
 
 	/**
 	 * Setter du firstName, le prenom du client
+	 *
+	 * @param firstName
+	 *            Prenom du client
 	 */
 	public void setFirstName(final String firstName) {
 		this.firstName = firstName;
@@ -125,6 +134,9 @@ public class Client implements Serializable {
 
 	/**
 	 * Setter de l'id, le numero d'identifiant en base de donnée du client
+	 *
+	 * @param id
+	 *            Id du client
 	 */
 	public void setId(final Integer id) {
 		this.id = id;
@@ -132,6 +144,9 @@ public class Client implements Serializable {
 
 	/**
 	 * Setter du lastName, le nom du client
+	 *
+	 * @param lastName
+	 *            Nom du client
 	 */
 	public void setLastName(final String lastName) {
 		this.lastName = lastName;
@@ -139,6 +154,9 @@ public class Client implements Serializable {
 
 	/**
 	 * Setter du tel, le numero de téléphone du client
+	 * 
+	 * @param tel
+	 *            Numero de telephone du client
 	 */
 	public void setTel(final String tel) {
 		this.tel = tel;
