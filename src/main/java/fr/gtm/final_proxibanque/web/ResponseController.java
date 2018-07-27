@@ -23,7 +23,6 @@ public class ResponseController {
 
 	@Autowired
 	private ResponseService responseService;
-<<<<<<< Updated upstream
 
 	/**
 	 * La methode addResponse est un WebService permettant de persister en base de
@@ -32,15 +31,11 @@ public class ResponseController {
 	 * @param response
 	 *            Reponse à enregistré
 	 * @return La réponse persisté en base de donnée
+	 * @throws MauvaiseDateException 
 	 */
 	@PostMapping({ "", "/" })
-	public Response addResponse(@RequestBody final Response response) {
-=======
-	
-	
-	@PostMapping({"","/"})
 	public Response addResponse(@RequestBody final Response response) throws MauvaiseDateException {
->>>>>>> Stashed changes
+
 		return this.responseService.create(response);
 	}
 
