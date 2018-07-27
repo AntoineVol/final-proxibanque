@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.gtm.final_proxibanque.business.ResponseService;
+import fr.gtm.final_proxibanque.domain.MauvaiseDateException;
 import fr.gtm.final_proxibanque.domain.Response;
 
 /**
@@ -22,6 +23,7 @@ public class ResponseController {
 
 	@Autowired
 	private ResponseService responseService;
+<<<<<<< Updated upstream
 
 	/**
 	 * La methode addResponse est un WebService permettant de persister en base de
@@ -33,6 +35,12 @@ public class ResponseController {
 	 */
 	@PostMapping({ "", "/" })
 	public Response addResponse(@RequestBody final Response response) {
+=======
+	
+	
+	@PostMapping({"","/"})
+	public Response addResponse(@RequestBody final Response response) throws MauvaiseDateException {
+>>>>>>> Stashed changes
 		return this.responseService.create(response);
 	}
 

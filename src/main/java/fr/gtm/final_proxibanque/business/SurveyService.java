@@ -5,9 +5,11 @@ import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import fr.gtm.final_proxibanque.dao.SurveyRepository;
+import fr.gtm.final_proxibanque.domain.MauvaiseDateException;
 import fr.gtm.final_proxibanque.domain.Response;
 import fr.gtm.final_proxibanque.domain.Survey;
 
@@ -20,6 +22,7 @@ import fr.gtm.final_proxibanque.domain.Survey;
 @Service
 public class SurveyService extends CrudService<Survey> {
 
+<<<<<<< Updated upstream
 	private static final Logger LOGGER = LoggerFactory.getLogger(SurveyService.class);
 
 	/**
@@ -33,6 +36,19 @@ public class SurveyService extends CrudService<Survey> {
 	 * @return Le nombre de nouveaux clients
 	 */
 	public Integer getNewClientCount(final List<Response> responses) {
+=======
+	private static final Logger LOGGER = LoggerFactory
+			.getLogger(SurveyService.class);
+	
+	@Autowired
+	private ResponseService responseService;
+	
+	public SurveyRepository getRepo() {
+		return (SurveyRepository) this.repo;
+	}
+	
+	public Integer getPositiveCount(List<Response> responses) {
+>>>>>>> Stashed changes
 		Integer count = 0;
 		for (final Response response : responses) {
 			if (response.isNewClient()) {
@@ -60,6 +76,7 @@ public class SurveyService extends CrudService<Survey> {
 		}
 		return count;
 	}
+<<<<<<< Updated upstream
 
 	/**
 	 * La methode SurveyRepository permet de recupérer le repository de la classe en
@@ -84,10 +101,47 @@ public class SurveyService extends CrudService<Survey> {
 		for (final Survey survey : surveys) {
 			if (survey.getEndDate() == null) {
 				isRunning = 1;
+=======
+	
+	
+	public void updateEndDate(LocalDate date) throws MauvaiseDateException {
+		List<Survey> surveys = this.repo.findAll();
+		for (Survey survey : surveys) {
+			if(survey.getEndDate()==null) {
+				if(date.isBefore(survey.getStartDate())) {
+					throw new MauvaiseDateException("La date de fermeture doit être postérieure à la date d'ouverture du sondage");
+				}
+				survey.setEndDate(date);
+				this.update(survey);
+			}
+		}
+	}
+	
+	public boolean isClosable() {
+		boolean isRunning = false;
+		List<Survey> surveys = this.repo.findAll();
+		for (Survey survey : surveys) {
+			if(survey.getEndDate()==null) {
+				isRunning = true;
+>>>>>>> Stashed changes
 			}
 		}
 		return isRunning;
 	}
+<<<<<<< Updated upstream
+=======
+	
+	public Survey create(Survey survey) throws MauvaiseDateException {
+		if(survey.getExpectedDate().isBefore(survey.getStartDate())) {
+			throw new MauvaiseDateException("La date de fermeture prévisionnelle doit être postérieure à la date d'ouverture du sondage");
+		}
+		this.repo.save(survey);
+		return survey;
+	}
+	
+	
+}
+>>>>>>> Stashed changes
 
 	/**
 	 * La methode updateEndDate met à jour la date de fin d'un sondage et la

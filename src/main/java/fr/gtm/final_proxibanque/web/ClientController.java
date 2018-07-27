@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import fr.gtm.final_proxibanque.business.ClientService;
 import fr.gtm.final_proxibanque.domain.Client;
+import fr.gtm.final_proxibanque.domain.MauvaiseDateException;
 
 /**
  * La class ClientController est un web service qui permet de dispatcher les
@@ -23,6 +24,7 @@ public class ClientController {
 
 	@Autowired
 	private ClientService clientService;
+<<<<<<< Updated upstream
 
 	/**
 	 * La methode addClient est un WebService déclenchant la création d'un nouveau
@@ -34,6 +36,16 @@ public class ClientController {
 	 */
 	@PostMapping({ "", "/" })
 	public Client addClient(@RequestBody final Client client) {
+=======
+	
+	@RequestMapping("/{id}")
+	public Client getClient(@PathVariable final Integer id){
+		return clientService.read(id);
+	}
+	
+	@PostMapping({"","/"})
+	public Client addClient(@RequestBody final Client client) throws MauvaiseDateException {
+>>>>>>> Stashed changes
 		return this.clientService.create(client);
 	}
 
