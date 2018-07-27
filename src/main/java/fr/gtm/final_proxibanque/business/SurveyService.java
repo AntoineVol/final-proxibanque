@@ -32,7 +32,7 @@ public class SurveyService extends CrudService<Survey> {
 	public Survey create(final Survey survey) throws MauvaiseDateException {
 		if (survey.getExpectedDate().isBefore(survey.getStartDate())) {
 			throw new MauvaiseDateException(
-					"La date de fermeture prévisionnelle doit être postérieure à la date d'ouverture du sondage");
+					"Attention: la date de fermeture prévisionnelle doit être postérieure à la date d'ouverture du sondage");
 		}
 		this.repo.save(survey);
 		SurveyService.LOGGER.debug("Sondage persisté en base");
@@ -117,7 +117,7 @@ public class SurveyService extends CrudService<Survey> {
 			if (survey.getEndDate() == null || survey.getEndDate().isAfter(today)) {
 				if (date.isBefore(survey.getStartDate())) {
 					throw new MauvaiseDateException(
-							"La date de fermeture doit être postérieure à la date d'ouverture du sondage");
+							"Attention: la date de fermeture doit être postérieure à la date d'ouverture du sondage");
 				}
 				survey.setEndDate(date);
 				this.update(survey);
