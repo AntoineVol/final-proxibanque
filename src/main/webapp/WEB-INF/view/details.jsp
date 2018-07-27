@@ -9,11 +9,11 @@
 <link rel="stylesheet" href="<c:url value = "/css/style.css"></c:url>">
 <body>
 	<nav class="navbar navbar-dark bg-dark ">
-		<h1 class="titre mx-auto">Détails du sondage</h1>
 		</div>
 		<c:url value="/index.html" var="index" />
-		<a href="${index}" class="btn btn-light">Revenir à l'accueil</a>
+		<a href="${index}" class="btn btn-outline-light">Revenir à l'accueil</a>
 		</div>
+		<h1 class="titre mx-auto">Détails du sondage</h1>
 	</nav>
 	<div class="container-fluid py-5">
 		<div class="row">
@@ -41,7 +41,7 @@
 			</div>
 			<div class="col-md-4">
 				<div class="row">
-					<div class="card text-white bg-info mb-3"
+					<div class="card text-white bg-dark mb-3"
 						style="max-width: 18rem; min-width: 16rem">
 						<div class="card-header">Nombre de réponse négatives:</div>
 						<div class="card-body">
@@ -54,7 +54,7 @@
 					</div>
 				</div>
 				<div class="row">
-					<div class="card text-white bg-info mb-3"
+					<div class="card text-white bg-dark mb-3"
 						style="max-width: 18rem; min-width: 16rem">
 						<div class="card-header">Nombre de réponse positives:</div>
 						<div class="card-body">
@@ -68,7 +68,7 @@
 					</div>
 				</div>
 				<div class="row">
-					<div class="card text-white bg-info mb-3"
+					<div class="card text-white bg-dark mb-3"
 						style="max-width: 18rem; min-width: 16rem">
 						<div class="card-header">Nouveaux clients inscrits:</div>
 						<div class="card-body">
