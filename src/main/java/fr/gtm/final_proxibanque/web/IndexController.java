@@ -45,10 +45,9 @@ public class IndexController {
 	private SurveyService surveyService;
 
 
-
 	@GetMapping({ "/index" })
 	public String index() {
-		return IndexController.CHEMIN_ACCUEIL;
+		return CHEMIN_ACCUEIL;
 	}
 
 	@GetMapping({ "/accueil" })
