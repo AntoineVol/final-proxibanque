@@ -18,13 +18,13 @@
 			<div class="col-md-6 ml-auto">
 				<div class="panel-body">
 					<table class="table table-light">
-						<thead class="thead-dark">
+						<thead style="background-color: #2c333a;" >
 							<tr>
-								<th scope="col">Id:</th>
-								<th scope="col">Date d'ouverture:</th>
-								<th scope="col">Date de fermeture prévisionnelle:</th>
-								<th scope="col">Date de fermeture:</th>
-								<th scope="col">Détails:</th>
+								<th>Id:</th>
+								<th>Date d'ouverture:</th>
+								<th>Date de fermeture prévisionnelle:</th>
+								<th>Date de fermeture:</th>
+								<th>Détails:</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -58,13 +58,13 @@
 									<button type="submit" class="btn btn-outline-light">Fermer le
 										sondage</button>
 									<c:if test="${not empty message}">
-										<div class="alert alert-danger" role="alert">${message}</div>
+										<div class="alert alert-danger my-2" role="alert">${message}</div>
 									</c:if>
 								</c:if>
 								<c:if test="${isRunning==false}">
 									<button type="submit" class="btn btn-default"
 										disabled="disabled">Fermer le sondage</button>
-									<div class="alert alert-warning" role="alert">Vous ne
+									<div class="alert alert-warning my-2" role="alert">Vous ne
 										pouvez pas fermer de sondage, car il n'y a pas de sondage en
 										cours</div>
 								</c:if>
@@ -91,9 +91,9 @@
 							</div>
 							<div class="form-group">
 								<c:if test="${isRunning==false}">
-									<button type="submit" class="btn btn-secondary">Créer</button>
+									<button type="submit" class="btn btn-outline-light">Créer</button>
 									<c:if test="${not empty message}">
-										<div class="alert alert-danger" role="alert">${message}</div>
+										<div class="alert alert-danger my-2" role="alert">${message}</div>
 									</c:if>
 
 								</c:if>

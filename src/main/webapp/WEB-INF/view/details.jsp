@@ -20,7 +20,7 @@
 			<div class="col-md-8">
 				<div class="panel-body">
 					<table class="table table-light">
-						<thead class="thead-dark">
+						<thead style="background-color: #2c333a;">
 							<tr>
 								<th scope="col">Id:</th>
 								<th scope="col">Commentaires:</th>
@@ -47,7 +47,7 @@
 						<div class="card-body">
 							<div class="testtoto">
 								<span> <img class="negatif-icon"
-									src="<c:url value = "/assets/negatif.svg"></c:url>">
+									src="<c:url value = "/assets/negatif.png"></c:url>">
 								</span> <span class="taillenegatif">${negatif}</span>
 							</div>
 						</div>
@@ -60,7 +60,7 @@
 						<div class="card-body">
 							<div class="testtoto">
 								<span> <img class="positif-icon"
-									src="<c:url value = "/assets/positif.svg"></c:url>">
+									src="<c:url value = "/assets/positif.png"></c:url>">
 								</span>
 								<spanc class="taillepositif">${positif}</span>
 							</div>
@@ -74,7 +74,7 @@
 						<div class="card-body">
 							<div class="testtoto">
 								<span> <img class="newclient-icon"
-									src="<c:url value = "/assets/newclient.svg"></c:url>">
+									src="<c:url value = "/assets/newclient.png"></c:url>">
 								</span> <span class="taillenewclient">${nc}</span>
 							</div>
 						</div>
