@@ -1,9 +1,9 @@
-package fr.gtm.final_proxibanque.business;
+package fr.gtm.finalproxibanque.business;
 
 import org.springframework.stereotype.Service;
 
-import fr.gtm.final_proxibanque.dao.ResponseRepository;
-import fr.gtm.final_proxibanque.domain.Response;
+import fr.gtm.finalproxibanque.dao.ResponseRepository;
+import fr.gtm.finalproxibanque.domain.Response;
 
 /**
  * Le ResponseService est le service apparenté l'entité Response
@@ -20,8 +20,8 @@ public class ResponseService extends CrudService<Response> {
 	 *
 	 * @return Le repository du Response
 	 */
+
 	public ResponseRepository getRepo() {
 		return (ResponseRepository) this.repo;
 	}
-
 }

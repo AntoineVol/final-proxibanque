@@ -1,9 +1,11 @@
-package fr.gtm.final_proxibanque.dao;
+package fr.gtm.finalproxibanque.dao;
+
+import javax.transaction.Transactional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import fr.gtm.final_proxibanque.domain.Response;
+import fr.gtm.finalproxibanque.domain.Response;
 
 /**
  * L'interface ResponseRepository permet de lier l'entité Client à un JPA
@@ -13,6 +15,7 @@ import fr.gtm.final_proxibanque.domain.Response;
  *
  */
 @Repository
+@Transactional
 public interface ResponseRepository extends JpaRepository<Response, Integer> {
 
 }

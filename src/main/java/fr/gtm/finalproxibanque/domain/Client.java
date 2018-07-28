@@ -1,4 +1,4 @@
-package fr.gtm.final_proxibanque.domain;
+package fr.gtm.finalproxibanque.domain;
 
 import java.io.Serializable;
 

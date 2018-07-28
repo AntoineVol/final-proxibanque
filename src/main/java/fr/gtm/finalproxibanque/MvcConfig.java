@@ -1,4 +1,4 @@
-package fr.gtm.final_proxibanque;
+package fr.gtm.finalproxibanque;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -10,7 +10,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
@@ -23,12 +23,11 @@ import org.springframework.web.servlet.view.JstlView;
  * @author Kamir Elsisi, Steven Roman, Antoine Volatron
  *
  */
-@SuppressWarnings("deprecation")
 @EnableWebMvc
 @Configuration
-@ComponentScan(basePackages = { "fr.gtm.final_proxibanque.web", "fr.gtm.final_proxibanque.business" })
-@EnableJpaRepositories(basePackages = { "fr.gtm.final_proxibanque.dao" })
-public class MvcConfig extends WebMvcConfigurerAdapter {
+@ComponentScan(basePackages = { "fr.gtm.finalproxibanque.web", "fr.gtm.finalproxibanque.business" })
+@EnableJpaRepositories(basePackages = { "fr.gtm.finalproxibanque.dao" })
+public class MvcConfig implements WebMvcConfigurer {
 	static final int CORS_AGE = 3600;
 
 	/**

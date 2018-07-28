@@ -1,4 +1,4 @@
-package fr.gtm.final_proxibanque.web;
+package fr.gtm.finalproxibanque.web;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import fr.gtm.final_proxibanque.business.ResponseService;
-import fr.gtm.final_proxibanque.domain.MauvaiseDateException;
-import fr.gtm.final_proxibanque.domain.Response;
+import fr.gtm.finalproxibanque.business.ResponseService;
+import fr.gtm.finalproxibanque.domain.MauvaiseDateException;
+import fr.gtm.finalproxibanque.domain.Response;
 
 /**
  * La class ResponseController est un web service qui permet de dispatcher les
@@ -23,10 +23,10 @@ import fr.gtm.final_proxibanque.domain.Response;
 @RequestMapping("/response")
 public class ResponseController {
 
+	private static final Logger LOGGER = LoggerFactory.getLogger(ResponseController.class);
+
 	@Autowired
 	private ResponseService responseService;
-	
-	private static final Logger LOGGER = LoggerFactory.getLogger(ResponseController.class);
 
 	/**
 	 * La methode addResponse est un WebService permettant de persister en base de
@@ -42,7 +42,9 @@ public class ResponseController {
 
 	@PostMapping({ "", "/" })
 	public Response addResponse(@RequestBody final Response response) throws MauvaiseDateException {
-		LOGGER.info("J'ajoute une réponse en base -- méthode addResponse -- class ResponseController");
+		ResponseController.LOGGER
+				.info("J'ajoute une réponse en base -- méthode addResponse -- class ResponseController");
+		ResponseController.LOGGER.info("cONTENU RESPONSE" + response.getComment());
 		return this.responseService.create(response);
 	}
 

@@ -1,4 +1,4 @@
-package fr.gtm.final_proxibanque.web;
+package fr.gtm.finalproxibanque.web;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -14,10 +14,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import fr.gtm.final_proxibanque.business.SurveyService;
-import fr.gtm.final_proxibanque.domain.MauvaiseDateException;
-import fr.gtm.final_proxibanque.domain.Response;
-import fr.gtm.final_proxibanque.domain.Survey;
+import fr.gtm.finalproxibanque.business.SurveyService;
+import fr.gtm.finalproxibanque.domain.MauvaiseDateException;
+import fr.gtm.finalproxibanque.domain.Response;
+import fr.gtm.finalproxibanque.domain.Survey;
 
 /**
  * La class IndexController permet de dispatcher les requetes HTTP concernant le
@@ -29,7 +29,7 @@ import fr.gtm.final_proxibanque.domain.Survey;
 @Controller
 public class IndexController {
 
-	private final static String CHEMIN_ACCUEIL = "redirect:/accueil.html";
+	private static final String CHEMIN_ACCUEIL = "redirect:/accueil.html";
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(IndexController.class);
 
@@ -51,7 +51,8 @@ public class IndexController {
 	public ModelAndView details(@RequestParam("id") final Integer id) {
 		final ModelAndView mav = new ModelAndView("details");
 		final List<Response> rep = this.surveyService.read(id).getResponses();
-		LOGGER.info("j'ai récupéré la liste des réponses d'un sondage grâce à son id -- méthode détails -- class IndexController");
+		IndexController.LOGGER.info(
+				"j'ai récupéré la liste des réponses d'un sondage grâce à son id -- méthode détails -- class IndexController");
 		mav.addObject("responses", rep);
 		mav.addObject("positif", this.surveyService.getPositiveCount(rep));
 		mav.addObject("negatif", rep.size() - this.surveyService.getPositiveCount(rep));
@@ -91,7 +92,8 @@ public class IndexController {
 		String message = "";
 		try {
 			this.surveyService.updateEndDate(dateFermeture);
-			LOGGER.info("j'ai mis à jour la date de fermeture du sondage -- méthode postaccueilF -- class IndexController");
+			IndexController.LOGGER.info(
+					"j'ai mis à jour la date de fermeture du sondage -- méthode postaccueilF -- class IndexController");
 		} catch (final MauvaiseDateException e) {
 			message = e.getMessage();
 			IndexController.LOGGER.info(message);
@@ -122,14 +124,15 @@ public class IndexController {
 			final RedirectAttributes redirectA) {
 		String message = "";
 		final Survey survey = new Survey();
-		LOGGER.info("je créé un sondage en locale -- méthode postaccueil -- class IndexController");
+		IndexController.LOGGER.info("je créé un sondage en locale -- méthode postaccueil -- class IndexController");
 		survey.setStartDate(dateOuverture);
-		LOGGER.info("je définis sa date d'ouverture -- méthode postaccueil -- class IndexController");
+		IndexController.LOGGER.info("je définis sa date d'ouverture -- méthode postaccueil -- class IndexController");
 		survey.setExpectedDate(dateFermeturePrevisionnelle);
-		LOGGER.info("je définis sa date de fermeture previsionnelle -- méthode postaccueil -- class IndexController");
+		IndexController.LOGGER
+				.info("je définis sa date de fermeture previsionnelle -- méthode postaccueil -- class IndexController");
 		try {
 			this.surveyService.create(survey);
-			LOGGER.info("je créé le sondage -- méthode postaccueil -- class IndexController");
+			IndexController.LOGGER.info("je créé le sondage -- méthode postaccueil -- class IndexController");
 		} catch (final MauvaiseDateException e) {
 			message = e.getMessage();
 			IndexController.LOGGER.info(message);
@@ -144,13 +147,14 @@ public class IndexController {
 	 * La méthode viewaccueil affiche la JSP listant les sondages. On y trouve
 	 * également un formulaire de création de sondage et un formulaire pour
 	 * paramétrer la date de cloture d'un sondage
-	 * 
+	 *
 	 * @return La JSP d'acceuil, listant les sondages
 	 */
 	@GetMapping({ "/accueil" })
 	public ModelAndView viewaccueil() {
 		final ModelAndView mav = new ModelAndView("index");
-		LOGGER.info("je me renseigne pour savoir s'il y a un sondage en cours -- méthode viewaccueil -- class IndexController");
+		IndexController.LOGGER.info(
+				"je me renseigne pour savoir s'il y a un sondage en cours -- méthode viewaccueil -- class IndexController");
 		final boolean isRunning = this.surveyService.isClosable();
 		mav.addObject("surveys", this.surveyService.getAll());
 		mav.addObject("isRunning", isRunning);

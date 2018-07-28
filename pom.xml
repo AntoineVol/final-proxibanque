@@ -3,10 +3,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>fr.gtm</groupId>
-	<artifactId>final_proxibanque</artifactId>
+	<artifactId>finalproxibanque</artifactId>
 	<version>0.0.1</version>
 	<packaging>war</packaging>
-	<name>final_proxibanque</name>
+	<name>finalproxibanque</name>
 
 	<properties>
 		<maven.compiler.source>1.8</maven.compiler.source>
@@ -162,6 +162,6 @@
 
 
 	<build>
-		<finalName>final_proxibanque</finalName>
+		<finalName>finalproxibanque</finalName>
 	</build>
 </project>

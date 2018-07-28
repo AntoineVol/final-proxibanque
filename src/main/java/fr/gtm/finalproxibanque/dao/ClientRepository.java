@@ -1,9 +1,9 @@
-package fr.gtm.final_proxibanque.dao;
+package fr.gtm.finalproxibanque.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import fr.gtm.final_proxibanque.domain.Client;
+import fr.gtm.finalproxibanque.domain.Client;
 
 /**
  * L'interface ClientRepository permet de lier l'entité Client à un JPA

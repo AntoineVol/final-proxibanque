@@ -1,4 +1,4 @@
-package fr.gtm.final_proxibanque.domain;
+package fr.gtm.finalproxibanque.domain;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -32,7 +32,7 @@ public class Survey implements Serializable {
 	 * Clé de serialisation
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	/**
 	 * l'endDate c'est la date de fermeture du sondage
 	 */
@@ -53,13 +53,13 @@ public class Survey implements Serializable {
 	private Integer id;
 
 	/**
-	 * responses est la liste des reponses à ce sondage. Une réponse
-	 * a plusieurs attributs: id, comment, client, newClient, positiveResponse et le survey
+	 * responses est la liste des reponses à ce sondage. Une réponse a plusieurs
+	 * attributs: id, comment, client, newClient, positiveResponse et le survey
 	 */
 	@OneToMany(mappedBy = "survey", fetch = FetchType.EAGER)
 	@JsonIgnore
 	private List<Response> responses = new ArrayList<>();
-	
+
 	/**
 	 * l'startDate c'est la date d'ouverture du sondage
 	 */
@@ -69,6 +69,7 @@ public class Survey implements Serializable {
 
 	/**
 	 * Getter de l'endDate
+	 *
 	 * @return the endDate, la date de fermeture du sondage
 	 */
 	public LocalDate getEndDate() {
@@ -77,6 +78,7 @@ public class Survey implements Serializable {
 
 	/**
 	 * Getter de l'expectedDate
+	 *
 	 * @return the expectedDate, la date de fermeture prévisionnelle du sondage
 	 */
 	public LocalDate getExpectedDate() {
@@ -85,6 +87,7 @@ public class Survey implements Serializable {
 
 	/**
 	 * Getter de l'id
+	 *
 	 * @return the id, l'identifiant unique utilisé dans la base de données
 	 */
 	public Integer getId() {
@@ -93,6 +96,7 @@ public class Survey implements Serializable {
 
 	/**
 	 * Getter de responses
+	 *
 	 * @return the responses, la liste des responses du sondage
 	 */
 	public List<Response> getResponses() {
@@ -101,6 +105,7 @@ public class Survey implements Serializable {
 
 	/**
 	 * Getter de startDate
+	 *
 	 * @return the startDate, la date d'ouverture du sondage
 	 */
 	public LocalDate getStartDate() {
@@ -109,6 +114,7 @@ public class Survey implements Serializable {
 
 	/**
 	 * Setter du l'endDate, date de fermeture du sondage
+	 *
 	 * @param endDate
 	 *            the endDate to set
 	 */
@@ -118,6 +124,7 @@ public class Survey implements Serializable {
 
 	/**
 	 * Setter du l'expectedDate, date de fermeture prévisionnelle du sondage
+	 *
 	 * @param expectedDate
 	 *            the expectedDate to set
 	 */
@@ -127,6 +134,7 @@ public class Survey implements Serializable {
 
 	/**
 	 * Setter du l'id, identifiant unique du sondage
+	 *
 	 * @param id
 	 *            the id to set
 	 */
@@ -136,6 +144,7 @@ public class Survey implements Serializable {
 
 	/**
 	 * Setter de responses, liste des réponses à ce sondage
+	 *
 	 * @param responses
 	 *            the responses to set
 	 */
@@ -145,6 +154,7 @@ public class Survey implements Serializable {
 
 	/**
 	 * Setter du l'startDate, date d'ouverture du sondage
+	 *
 	 * @param startDate
 	 *            the startDate to set
 	 */

@@ -20,17 +20,17 @@
 	</appender>
 
 
-	<logger level="debug" name="fr.gtm.final_proxibanque.business"
+	<logger level="debug" name="fr.gtm.finalproxibanque.business"
 		additivity="false">
 		<appender-ref ref="STDOUT" />
 	</logger>
 	
-	<logger level="info" name="fr.gtm.final_proxibanque.business"
+	<logger level="info" name="fr.gtm.finalproxibanque.business"
 		additivity="false">
 		<appender-ref ref="APPLOG" />
 	</logger>
 	
-	<logger level="debug" name="fr.gtm.final_proxibanque.domain"
+	<logger level="debug" name="fr.gtm.finalproxibanque.domain"
 		additivity="false">
 		<appender-ref ref="STDOUT" />
 	</logger>
@@ -40,12 +40,12 @@
 		<appender-ref ref="APPLOG" />
 	</logger>
 	
-	<logger level="debug" name="fr.gtm.final_proxibanque.web"
+	<logger level="debug" name="fr.gtm.finalproxibanque.web"
 		additivity="false">
 		<appender-ref ref="STDOUT" />
 	</logger>
 	
-	<logger level="info" name="fr.gtm.final_proxibanque.web"
+	<logger level="info" name="fr.gtm.finalproxibanque.web"
 		additivity="false">
 		<appender-ref ref="APPLOG" />
 	</logger>

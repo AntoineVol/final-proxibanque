@@ -1,4 +1,4 @@
-package fr.gtm.final_proxibanque.domain;
+package fr.gtm.finalproxibanque.domain;
 
 import java.io.Serializable;
 
@@ -63,7 +63,7 @@ public class Response implements Serializable {
 
 	/**
 	 * Getter du Client
-	 * 
+	 *
 	 * @return the client, retourne le client
 	 */
 	public Client getClient() {
@@ -72,7 +72,7 @@ public class Response implements Serializable {
 
 	/**
 	 * Getter du comment
-	 * 
+	 *
 	 * @return the comment, le commentaire
 	 */
 	public String getComment() {
@@ -81,7 +81,7 @@ public class Response implements Serializable {
 
 	/**
 	 * Getter de l'id
-	 * 
+	 *
 	 * @return the id, identifiant unique de la réponse
 	 */
 	public Integer getId() {
@@ -90,7 +90,7 @@ public class Response implements Serializable {
 
 	/**
 	 * Getter du survey
-	 * 
+	 *
 	 * @return the survey, qui est le sondage
 	 */
 	public Survey getSurvey() {
@@ -99,7 +99,7 @@ public class Response implements Serializable {
 
 	/**
 	 * Getter du newClient
-	 * 
+	 *
 	 * @return the newClient, qui informe si le client est nouveau ou pas
 	 */
 	public boolean isNewClient() {
@@ -108,7 +108,7 @@ public class Response implements Serializable {
 
 	/**
 	 * Getter du positiveResponse
-	 * 
+	 *
 	 * @return the positiveResponse, qui informe si la réponse est positive
 	 */
 	public boolean isPositiveResponse() {

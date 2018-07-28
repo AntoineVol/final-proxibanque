@@ -1,4 +1,4 @@
-package fr.gtm.final_proxibanque.business;
+package fr.gtm.finalproxibanque.business;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -8,13 +8,18 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import fr.gtm.final_proxibanque.dao.SurveyRepository;
-import fr.gtm.final_proxibanque.domain.MauvaiseDateException;
-import fr.gtm.final_proxibanque.domain.Response;
-import fr.gtm.final_proxibanque.domain.Survey;
+import fr.gtm.finalproxibanque.dao.SurveyRepository;
+import fr.gtm.finalproxibanque.domain.MauvaiseDateException;
+import fr.gtm.finalproxibanque.domain.Response;
+import fr.gtm.finalproxibanque.domain.Survey;
 
 /**
- * Le SurveyService est le service apparenté l'entité Surveys
+ * Le CrudService est le service générique. Il sera utilisé par les services de
+ * survey, client et réponses pour les méthodes classiques du CRUD. La création,
+ * la remontée d'un élément en fonction de son ID, la remonté de tous les
+ * éléments, la modification d'un élément et la supression d'un élément par son
+ * id.
+ *
  *
  * @author Kamir Elsisi, Steven Roman, Antoine Volatron
  *
