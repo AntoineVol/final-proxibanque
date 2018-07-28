@@ -155,7 +155,7 @@ public class IndexController {
 		final ModelAndView mav = new ModelAndView("index");
 		IndexController.LOGGER.info(
 				"je me renseigne pour savoir s'il y a un sondage en cours -- méthode viewaccueil -- class IndexController");
-		final boolean isRunning = this.surveyService.isClosable();
+		final int isRunning = this.surveyService.isClosable();
 		mav.addObject("surveys", this.surveyService.getAll());
 		mav.addObject("isRunning", isRunning);
 		return mav;

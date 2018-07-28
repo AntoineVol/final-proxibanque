@@ -54,14 +54,14 @@
 									name="dateFermeture" required>
 							</div>
 							<div class="form-group">
-								<c:if test="${isRunning==true}">
+								<c:if test="${isRunning!=0}">
 									<button type="submit" class="btn btn-outline-light">Fermer le
 										sondage</button>
 									<c:if test="${not empty message}">
 										<div class="alert alert-danger my-2" role="alert">${message}</div>
 									</c:if>
 								</c:if>
-								<c:if test="${isRunning==false}">
+								<c:if test="${isRunning==0}">
 									<button type="submit" class="btn btn-default"
 										disabled="disabled">Fermer le sondage</button>
 									<div class="alert alert-warning my-2" role="alert">Vous ne
@@ -90,14 +90,14 @@
 									name="dateFermeturePrevisionnelle" required>
 							</div>
 							<div class="form-group">
-								<c:if test="${isRunning==false}">
+								<c:if test="${isRunning==0}">
 									<button type="submit" class="btn btn-outline-light">Créer</button>
 									<c:if test="${not empty message}">
 										<div class="alert alert-danger my-2" role="alert">${message}</div>
 									</c:if>
 
 								</c:if>
-								<c:if test="${isRunning==true}">
+								<c:if test="${isRunning!=0}">
 									<button type="submit" class="btn btn-default"
 										disabled="disabled">Créer</button>
 									<div class="alert alert-warning my-2" role="alert">Vous ne

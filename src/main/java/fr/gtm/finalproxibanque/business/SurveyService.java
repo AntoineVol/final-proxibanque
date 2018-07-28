@@ -90,13 +90,13 @@ public class SurveyService extends CrudService<Survey> {
 	 * @return false si il n'y a pas de sondage actif, true si il existe un sondage
 	 *         actif
 	 */
-	public boolean isClosable() {
-		boolean isRunning = false;
+	public int isClosable() {
+		int isRunning = 0;
 		final LocalDate today = LocalDate.now();
 		final List<Survey> surveys = this.repo.findAll();
 		for (final Survey survey : surveys) {
 			if (survey.getEndDate() == null || survey.getEndDate().isAfter(today)) {
-				isRunning = true;
+				isRunning = survey.getId();
 			}
 		}
 		return isRunning;
@@ -119,7 +119,7 @@ public class SurveyService extends CrudService<Survey> {
 		final List<Survey> surveys = this.repo.findAll();
 		final LocalDate today = LocalDate.now();
 		for (final Survey survey : surveys) {
-			if (survey.getEndDate() == null || survey.getEndDate().isAfter(today)) {
+			if (survey.getId()==this.isClosable()) {
 				if (date.isBefore(survey.getStartDate())) {
 					throw new MauvaiseDateException(
 							"Attention: la date de fermeture doit être postérieure à la date d'ouverture du sondage.");
