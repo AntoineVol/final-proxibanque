@@ -37,7 +37,8 @@ INSERT INTO `client` (`id`, `clientNumber`, `email`, `firstName`, `lastName`, `t
 
 INSERT INTO `survey` (`id`, `endDate`, `expectedDate`, `startDate`) VALUES
 (1, '2018-07-25', '2018-07-25', '2018-07-20'),
-(2, NULL, '2018-07-26', '2018-08-03');
+(2, NULL, '2018-08-03', '2018-07-26'),
+(3, NULL, '2018-09-30', '2018-09-10');
 
 
 --

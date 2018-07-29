@@ -15,7 +15,7 @@ public class ResponseService extends CrudService<Response> {
 
 	/**
 	 * La methode ResponseRepository permet de recupérer le repository de la classe
-	 * en forcant sont typage en "Repository"
+	 * en forçant sont typage en "Repository"
 	 *
 	 * @return Le repository du Response
 	 */
@@ -26,8 +26,13 @@ public class ResponseService extends CrudService<Response> {
 	
 	
 	
-	
-	public Response create(Response response) {
+	/**
+	 * méthode pour enregistrer un nouveau avis au sondage (response) en base de données
+	 * @param response 
+	 * 					l'avis au sondage à enregistrer
+	 * @return l'avis (response)
+	 */
+	public Response create(final Response response) {
 		
 		return this.repo.save(response);
 	}

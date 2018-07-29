@@ -18,8 +18,8 @@ public class ClientService extends CrudService<Client> {
 
 
 	/**
-	 * La methode ClientRepository permet de recupérer le repository de la classe en
-	 * forcant sont typage en "Repository"
+	 * La methode ClientRepository permet de récupérer le repository de la classe en
+	 * forçant son typage en "Repository"
 	 *
 	 * @return Le repository du Client
 	 */
@@ -28,13 +28,25 @@ public class ClientService extends CrudService<Client> {
 	}
 	
 	
+	/**
+	 * Trouver un client à partir de son numéro d'identification
+	 * @param clientNumber
+	 * 					 le numéro du client
+	 * @return le client 
+	 */
 	public Client findByClientNumber(final String clientNumber) {
-
+		
 		return this.getRepo().findByClientNumber(clientNumber);
 	}
 	
 	
-	public Client create(Client client) {
+	/**
+	 * méthode pour enregistrer un nouveau client en base de données
+	 * @param client
+	 * 				le client à enregitrer
+	 * @return le client 
+	 */
+	public Client create(final Client client) {
 		
 		return this.repo.save(client);
 		

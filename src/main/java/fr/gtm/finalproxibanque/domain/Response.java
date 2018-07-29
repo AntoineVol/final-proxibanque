@@ -60,6 +60,7 @@ public class Response implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "id_survey")
 	private Survey survey;
+	
 
 	/**
 	 * Getter du Client

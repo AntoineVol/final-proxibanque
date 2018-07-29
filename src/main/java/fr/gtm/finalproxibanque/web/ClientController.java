@@ -61,6 +61,14 @@ public class ClientController {
 		return this.clientService.read(id);
 	}
 
+	/**
+	 * La methode getClient est un WebService permettant de retourner un client à
+	 * partir de son numéro d'identification
+	 *
+	 * @param num
+	 *            numéro d'identification du client recherché
+	 * @return Le client enregistré en base correspondant au numéro
+	 */
 	@RequestMapping("/numero/{num}")
 	public Client getClient(@PathVariable final String num) {
 		ClientController.LOGGER
