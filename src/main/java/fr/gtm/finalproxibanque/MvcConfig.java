@@ -28,12 +28,13 @@ import org.springframework.web.servlet.view.JstlView;
 @ComponentScan(basePackages = { "fr.gtm.finalproxibanque.web", "fr.gtm.finalproxibanque.business" })
 @EnableJpaRepositories(basePackages = { "fr.gtm.finalproxibanque.dao" })
 public class MvcConfig implements WebMvcConfigurer {
+	
 	static final int CORS_AGE = 3600;
 
 	/**
 	 * Le addCorsMappings permet de receptionner les requêtes venant d'un autres
 	 * domaine. Dans notre cas la partie front étant du coté d'angular, ce
-	 * paramétrage nous permet d'échanger à travers les deux ports
+	 * paramétrage nous permet d'échanger à travers les deux ports.
 	 *
 	 **/
 	@Override

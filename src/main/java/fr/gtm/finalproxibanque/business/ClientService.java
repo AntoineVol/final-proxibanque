@@ -13,6 +13,8 @@ import fr.gtm.finalproxibanque.domain.Client;
  */
 @Service
 public class ClientService extends CrudService<Client> {
+	
+	
 	public Client findByClientNumber(final String clientNumber) {
 
 		return this.getRepo().findByClientNumber(clientNumber);

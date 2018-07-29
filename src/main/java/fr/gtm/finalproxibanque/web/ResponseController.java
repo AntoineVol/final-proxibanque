@@ -44,7 +44,6 @@ public class ResponseController {
 	public Response addResponse(@RequestBody final Response response) throws MauvaiseDateException {
 		ResponseController.LOGGER
 				.info("J'ajoute une réponse en base -- méthode addResponse -- class ResponseController");
-		ResponseController.LOGGER.info("cONTENU RESPONSE" + response.getComment());
 		return this.responseService.create(response);
 	}
 

@@ -117,9 +117,8 @@ public class SurveyService extends CrudService<Survey> {
 
 	public void updateEndDate(final LocalDate date) throws MauvaiseDateException {
 		final List<Survey> surveys = this.repo.findAll();
-		final LocalDate today = LocalDate.now();
 		for (final Survey survey : surveys) {
-			if (survey.getId()==this.isClosable()) {
+			if (survey.getId() == this.isClosable()) {
 				if (date.isBefore(survey.getStartDate())) {
 					throw new MauvaiseDateException(
 							"Attention: la date de fermeture doit être postérieure à la date d'ouverture du sondage.");
