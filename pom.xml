@@ -3,10 +3,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>fr.gtm</groupId>
-	<artifactId>final_proxibanque</artifactId>
-	<packaging>war</packaging>
+	<artifactId>finalproxibanque</artifactId>
 	<version>0.0.1</version>
-	<name>final_proxibanque</name>
+	<packaging>war</packaging>
+	<name>finalproxibanque</name>
 
 	<properties>
 		<maven.compiler.source>1.8</maven.compiler.source>
@@ -144,7 +144,12 @@
 			<version>2.9.6</version>
 		</dependency>
 
-
+		<!-- dependance pour la gestion des dates à travers le protocole HTTP -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.datatype</groupId>
+			<artifactId>jackson-datatype-jsr310</artifactId>
+			<version>2.9.6</version>
+		</dependency>
 
 
 		<!-- dependances junit -->
@@ -157,6 +162,6 @@
 
 
 	<build>
-		<finalName>final_proxibanque</finalName>
+		<finalName>finalproxibanque</finalName>
 	</build>
 </project>

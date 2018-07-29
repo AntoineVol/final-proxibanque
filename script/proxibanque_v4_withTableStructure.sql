@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  jeu. 26 juil. 2018 à 15:54
+-- Généré le :  jeu. 26 juil. 2018 à 18:03
 -- Version du serveur :  10.1.32-MariaDB
 -- Version de PHP :  7.2.5
 
@@ -42,7 +42,7 @@ CREATE TABLE `client` (
 --
 
 INSERT INTO `client` (`id`, `clientNumber`, `email`, `firstName`, `lastName`, `tel`) VALUES
-(1, '16589354\r\n', 'steve.jobs@gmail.com', 'Steve', 'Jobs', '0603015986'),
+(1, '16589354', 'steve.jobs@gmail.com', 'Steve', 'Jobs', '0603015986'),
 (2, '56996368', 'jim.morrisongmail.fr', 'Jim', 'Morrison', '0963568935');
 
 -- --------------------------------------------------------
@@ -90,7 +90,7 @@ CREATE TABLE `survey` (
 
 INSERT INTO `survey` (`id`, `endDate`, `expectedDate`, `startDate`) VALUES
 (1, '2018-07-25', '2018-07-25', '2018-07-20'),
-(2, NULL, '2018-07-26', '2018-08-03');
+(2, NULL, '2018-08-03', '2018-07-26');
 
 --
 -- Index pour les tables déchargées

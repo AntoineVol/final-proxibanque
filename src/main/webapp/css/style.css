@@ -1,0 +1,58 @@
+/* h1 { */
+/* 	text-align: center; */
+/* } */
+
+.positif-icon {
+    height: 72px;
+}
+.negatif-icon {
+    height: 72px;
+}
+.newclient-icon {
+    height: 72px;
+}
+
+.taillepositif{
+	font-size: 36px;
+}
+
+.taillenegatif{
+	font-size: 36px;
+}
+
+.taillenewclient{
+	font-size: 36px;
+}
+
+body {
+	background: url("banner2.jpg");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+/* 	color: #ffffff; */
+/* 	padding: 23em 0em 14em; */
+/* 	text-align: center; */
+ 	min-height: 820px; 
+}
+
+.testtoto{
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+
+nav.navbar{
+	color: white;
+}
+
+
+th{
+	color: white;
+	font-style: oblique;
+	
+}
+
+.id{
+	color: white;
+}
+	
