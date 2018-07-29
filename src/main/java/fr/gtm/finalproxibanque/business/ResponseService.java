@@ -1,7 +1,6 @@
 package fr.gtm.finalproxibanque.business;
 
 import org.springframework.stereotype.Service;
-
 import fr.gtm.finalproxibanque.dao.ResponseRepository;
 import fr.gtm.finalproxibanque.domain.Response;
 
@@ -24,4 +23,14 @@ public class ResponseService extends CrudService<Response> {
 	public ResponseRepository getRepo() {
 		return (ResponseRepository) this.repo;
 	}
+	
+	
+	
+	
+	public Response create(Response response) {
+		
+		return this.repo.save(response);
+	}
+	
+	
 }

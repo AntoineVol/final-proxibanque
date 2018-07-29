@@ -15,10 +15,7 @@ import fr.gtm.finalproxibanque.domain.Client;
 public class ClientService extends CrudService<Client> {
 	
 	
-	public Client findByClientNumber(final String clientNumber) {
 
-		return this.getRepo().findByClientNumber(clientNumber);
-	}
 
 	/**
 	 * La methode ClientRepository permet de recupérer le repository de la classe en
@@ -29,4 +26,20 @@ public class ClientService extends CrudService<Client> {
 	public ClientRepository getRepo() {
 		return (ClientRepository) this.repo;
 	}
+	
+	
+	public Client findByClientNumber(final String clientNumber) {
+
+		return this.getRepo().findByClientNumber(clientNumber);
+	}
+	
+	
+	public Client create(Client client) {
+		
+		return this.repo.save(client);
+		
+	}
+	
+	
+	
 }
