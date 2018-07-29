@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  jeu. 26 juil. 2018 à 18:03
+-- Généré le :  Dim 29 juil. 2018 à 15:26
 -- Version du serveur :  10.1.32-MariaDB
 -- Version de PHP :  7.2.5
 
@@ -21,6 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Base de données :  `proxibanque_v4`
 --
+CREATE DATABASE IF NOT EXISTS `proxibanque_v4` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `proxibanque_v4`;
 
 -- --------------------------------------------------------
 
@@ -28,21 +30,22 @@ SET time_zone = "+00:00";
 -- Structure de la table `client`
 --
 
-CREATE TABLE `client` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `client` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `clientNumber` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `firstName` varchar(255) DEFAULT NULL,
   `lastName` varchar(255) DEFAULT NULL,
-  `tel` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `tel` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `client`
 --
 
 INSERT INTO `client` (`id`, `clientNumber`, `email`, `firstName`, `lastName`, `tel`) VALUES
-(1, '16589354', 'steve.jobs@gmail.com', 'Steve', 'Jobs', '0603015986'),
+(1, '16589354\r\n', 'steve.jobs@gmail.com', 'Steve', 'Jobs', '0603015986'),
 (2, '56996368', 'jim.morrisongmail.fr', 'Jim', 'Morrison', '0963568935');
 
 -- --------------------------------------------------------
@@ -51,14 +54,17 @@ INSERT INTO `client` (`id`, `clientNumber`, `email`, `firstName`, `lastName`, `t
 -- Structure de la table `response`
 --
 
-CREATE TABLE `response` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `response` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `comment` varchar(255) DEFAULT NULL,
   `newClient` bit(1) NOT NULL,
   `positiveResponse` bit(1) NOT NULL,
   `id_client` int(11) DEFAULT NULL,
-  `id_survey` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `id_survey` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK7bkqv1dgx1qhiynb0clrlpju6` (`id_client`),
+  KEY `FKscaxble1ha55b1fgq25a8ktqc` (`id_survey`)
+) ENGINE=InnoDB AUTO_INCREMENT=65 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `response`
@@ -77,12 +83,13 @@ INSERT INTO `response` (`id`, `comment`, `newClient`, `positiveResponse`, `id_cl
 -- Structure de la table `survey`
 --
 
-CREATE TABLE `survey` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `survey` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `endDate` date DEFAULT NULL,
   `expectedDate` date DEFAULT NULL,
-  `startDate` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `startDate` date DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `survey`
@@ -91,52 +98,6 @@ CREATE TABLE `survey` (
 INSERT INTO `survey` (`id`, `endDate`, `expectedDate`, `startDate`) VALUES
 (1, '2018-07-25', '2018-07-25', '2018-07-20'),
 (2, NULL, '2018-08-03', '2018-07-26');
-
---
--- Index pour les tables déchargées
---
-
---
--- Index pour la table `client`
---
-ALTER TABLE `client`
-  ADD PRIMARY KEY (`id`);
-
---
--- Index pour la table `response`
---
-ALTER TABLE `response`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `FK7bkqv1dgx1qhiynb0clrlpju6` (`id_client`),
-  ADD KEY `FKscaxble1ha55b1fgq25a8ktqc` (`id_survey`);
-
---
--- Index pour la table `survey`
---
-ALTER TABLE `survey`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT pour les tables déchargées
---
-
---
--- AUTO_INCREMENT pour la table `client`
---
-ALTER TABLE `client`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT pour la table `response`
---
-ALTER TABLE `response`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT pour la table `survey`
---
-ALTER TABLE `survey`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Contraintes pour les tables déchargées
