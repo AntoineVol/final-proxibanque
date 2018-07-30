@@ -55,4 +55,12 @@ th{
 .id{
 	color: white;
 }
+
+.colonneId{
+	width: 5%;
+}
+
+.colonneComment{
+	width: 95%;
+}
 	

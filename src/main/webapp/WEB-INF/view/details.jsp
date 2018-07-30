@@ -19,19 +19,19 @@
 		<div class="row">
 			<div class="col-md-8">
 				<div class="panel-body">
-					<table class="table table-light">
+					<table class="table table-light" style="table-layout: fixed;">
 						<thead style="background-color: #2c333a;">
 							<tr>
-								<th scope="col">Id:</th>
-								<th scope="col">Commentaires:</th>
+								<th class="colonneId">Id:</th>
+								<th class="colonneComment">Commentaires:</th>
 							</tr>
 						</thead>
 						<tbody>
 							<c:forEach var="reponse" items="${responses}">
 								<c:if test="${not empty reponse.comment}">
 									<tr>
-										<td class="id" style="background-color: #2c333a;">${reponse.id}</td>
-										<td>${reponse.comment}</td>
+										<td class="id" style="background-color: #2c333a; max-width: 5em;">${reponse.id}</td>
+										<td style="word-wrap:break-word;">${reponse.comment}</td>
 									</tr>
 								</c:if>
 							</c:forEach>
