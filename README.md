@@ -1,19 +1,15 @@
 # final-proxibanque
-___________________
 Final-proxibanque est un logiciel destiné à la création et au suivi de sondage effectués aupès des clients de Proxibanque. Une partie back permet d'administrer les sondages, la partie front est l'interface destinée aux clients.
 
 ## Auteurs
-__________
 * Kamir Elsisi
 * Steven Roman
 * Antoine Volatron
 
 ## Etat du projet
-_________________
 Le projet est à la version 1. Le back et le front sont stabilisés.
 
 ## Installation rapide
-______________________
 ### La presistence 
 1. Lancer votre système de gestion de BDD
 2. Installer la base de donnée proxibanque_v4
@@ -31,6 +27,5 @@ Pour installer la structure et un jeu de donnée test, importez le fichier : scr
 
 
 ## Documentation
-________________
 
 La documentation de la partie JEE (back) se trouve dans le dossier doc/. Pour la parcourir, ouvrir le document index.html dans votre navigateur web
