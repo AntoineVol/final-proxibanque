@@ -27,8 +27,7 @@ Installer la base de donnée "proxibanque_v4"
 2. Entrer dans la console 'npm install'
 3. Entrer dans la console 'npm install -g @angular/cli'
 4. Lancer un serveur web (ng serve --open) pour atteindre l'application en local
-3. Cas d'utilisation a utiliser pour le test : 
-        * Numéro d'identification: 16589354
+3. Cas d'utilisation a utiliser pour le test : Numéro d'identification: 16589354
 
 
 ## Documentation
