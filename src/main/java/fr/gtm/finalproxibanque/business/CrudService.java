@@ -26,8 +26,14 @@ public abstract class CrudService<E> {
 	/**
 	 * La methode create permet créer en base l'entité
 	 *
+	 * @param entity
+	 *            Entité
+	 *
 	 * @return ça retourne l'entité créée
+	 * @throws MauvaiseDateException
+	 *             Erreur si la date de fin est antérieure à la date de début
 	 */
+
 	public E create(final E entity) throws MauvaiseDateException {
 		CrudService.LOGGER.debug("Passage par le crud service");
 		return this.repo.save(entity);
@@ -36,7 +42,11 @@ public abstract class CrudService<E> {
 	/**
 	 * La methode delete permet supprimer en base l'entité
 	 *
+	 * @param id
+	 *            Identifiant de l'entité
+	 *
 	 */
+
 	public void delete(final Integer id) {
 		this.repo.deleteById(id);
 	}
@@ -46,6 +56,7 @@ public abstract class CrudService<E> {
 	 *
 	 * @return ça retourne la liste des entités
 	 */
+
 	public List<E> getAll() {
 		return this.repo.findAll();
 	}
@@ -54,8 +65,11 @@ public abstract class CrudService<E> {
 	 * La methode read permet de récupérer un entité en la récupérant grâce à son
 	 * identifiant
 	 *
+	 * @param id
+	 *            Identifiant de l'entité
 	 * @return ça retourne l'entité
 	 */
+
 	public E read(final Integer id) {
 		E entity = null;
 		final Optional<E> opt = this.repo.findById(id);
@@ -68,8 +82,11 @@ public abstract class CrudService<E> {
 	/**
 	 * La methode update permet mettre à jour l'entité
 	 *
+	 * @param entity
+	 *            Entité
 	 * @return ça retourne l'entité
 	 */
+
 	public E update(final E entity) {
 		return this.repo.save(entity);
 	}

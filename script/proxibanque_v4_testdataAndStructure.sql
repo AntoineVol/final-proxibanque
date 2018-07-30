@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  Dim 29 juil. 2018 à 15:26
+-- Généré le :  lun. 30 juil. 2018 à 11:08
 -- Version du serveur :  10.1.32-MariaDB
 -- Version de PHP :  7.2.5
 
@@ -56,7 +56,7 @@ INSERT INTO `client` (`id`, `clientNumber`, `email`, `firstName`, `lastName`, `t
 
 CREATE TABLE IF NOT EXISTS `response` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `comment` varchar(255) DEFAULT NULL,
+  `comment` varchar(600) DEFAULT NULL,
   `newClient` bit(1) NOT NULL,
   `positiveResponse` bit(1) NOT NULL,
   `id_client` int(11) DEFAULT NULL,

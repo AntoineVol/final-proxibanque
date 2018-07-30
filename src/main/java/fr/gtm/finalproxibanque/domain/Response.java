@@ -2,6 +2,7 @@ package fr.gtm.finalproxibanque.domain;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -34,6 +35,7 @@ public class Response implements Serializable {
 	/**
 	 * Un commentaire laissé par un client pour un sondage
 	 */
+	@Column(length = 600)
 	private String comment;
 
 	/**
@@ -60,7 +62,6 @@ public class Response implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "id_survey")
 	private Survey survey;
-	
 
 	/**
 	 * Getter du Client
