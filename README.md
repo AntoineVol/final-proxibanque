@@ -29,3 +29,8 @@ Pour installer la structure et un jeu de donnée test, importez le fichier : scr
 1. Ouvrir une console dans le dossier front
 2. Lancer un serveur web (ng serve) pour atteindre l'application en local
 
+
+## Documentation
+________________
+
+La documentation de la partie JEE (back) se trouve dans le dossier doc/. Pour la parcourir, ouvrir le document index.html dans votre navigateur web
