@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="<c:url value = "/css/style.css"></c:url>">
 <body>
 	<nav class="navbar navbar-dark bg-dark ">
-		</div>
+		<div>
 		<c:url value="/index.html" var="index" />
 		<a href="${index}" class="btn btn-outline-light">Revenir à l'accueil</a>
 		</div>
