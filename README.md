@@ -18,9 +18,9 @@ Installer la base de donnée "proxibanque_v4"
 
 ### Le back
 1. Dézipper le dossier proxibanque_ERV
-2. Copier le back/proxibanque_ERV.war dans votre serveur web
+2. Copier le back/finalproxibanque.war dans votre serveur web
 3. Lancer votre serveur web
-4. Lancer un navigateur et entrez l'url: 'http://localhost:8080/proxibanque_ERV/'
+4. Lancer un navigateur et entrez l'url: 'http://localhost:8080/finalproxibanque/'
 
 ### Le front
 1. Ouvrir une console dans le dossier front
