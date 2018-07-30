@@ -19,7 +19,7 @@
 		<div class="row">
 			<div class="col-md-8">
 				<div class="panel-body">
-					<table class="table table-light" style="table-layout: fixed;">
+					<table class="table table-light" style="width:850px; table-layout: fixed; display: flex; flex-direction: column;">
 						<thead style="background-color: #2c333a;">
 							<tr>
 								<th class="colonneId">Id:</th>
@@ -30,7 +30,7 @@
 							<c:forEach var="reponse" items="${responses}">
 								<c:if test="${not empty reponse.comment}">
 									<tr>
-										<td class="id" style="background-color: #2c333a; max-width: 5em;">${reponse.id}</td>
+										<td class="id" style="width: 43px; background-color: #2c333a;">${reponse.id}</td>
 										<td style="word-wrap:break-word;">${reponse.comment}</td>
 									</tr>
 								</c:if>
