@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS `client` (
 --
 
 INSERT INTO `client` (`id`, `clientNumber`, `email`, `firstName`, `lastName`, `tel`) VALUES
-(1, '16589354\r\n', 'steve.jobs@gmail.com', 'Steve', 'Jobs', '0603015986'),
+(1, '16589354', 'steve.jobs@gmail.com', 'Steve', 'Jobs', '0603015986'),
 (2, '56996368', 'jim.morrisongmail.fr', 'Jim', 'Morrison', '0963568935');
 
 -- --------------------------------------------------------
