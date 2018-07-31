@@ -162,6 +162,6 @@
 
 
 	<build>
-		<finalName>finalproxibanque</finalName>
+		<finalName>proxibanquev4_ERV</finalName>
 	</build>
 </project>

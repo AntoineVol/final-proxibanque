@@ -30,8 +30,8 @@
 							<c:forEach var="reponse" items="${responses}">
 								<c:if test="${not empty reponse.comment}">
 									<tr>
-										<td class="id" style="width: 43px; background-color: #2c333a;">${reponse.id}</td>
-										<td style="word-wrap:break-word;">${reponse.comment}</td>
+										<td class="id" style="width: 5%; background-color: #2c333a;">${reponse.id}</td>
+										<td style="width: 95%;word-wrap:break-word;">${reponse.comment}</td>
 									</tr>
 								</c:if>
 							</c:forEach>
